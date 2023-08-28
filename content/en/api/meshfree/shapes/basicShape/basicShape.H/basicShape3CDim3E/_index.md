@@ -8,7 +8,7 @@ contributors:
 hyde:
   brief: __INLINED__
   declaration: "template <unsigned short Dim>\nclass Foam::mff::basicShape;"
-  defined_in_file: https://github.com/FoamScience/MeshFreeFoam.git/blob/master/src/meshfree/shapes/basicShape/basicShape.H
+  defined_in_file: https://github.com/FoamScience/MeshFreeFoam/blob/master/src/meshfree/shapes/basicShape/basicShape.H
   fields:
     boundaryNames_:
       annotation:

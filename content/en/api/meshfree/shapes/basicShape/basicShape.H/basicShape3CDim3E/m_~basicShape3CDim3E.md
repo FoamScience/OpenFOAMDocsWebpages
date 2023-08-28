@@ -5,7 +5,7 @@ contributors:
   - elwardi
 hyde:
   brief: __INLINED__
-  defined_in_file: https://github.com/FoamScience/MeshFreeFoam.git/blob/master/src/meshfree/shapes/basicShape/basicShape.H
+  defined_in_file: https://github.com/FoamScience/MeshFreeFoam/blob/master/src/meshfree/shapes/basicShape/basicShape.H
   inline:
     brief:
       - Destruct basicShapes

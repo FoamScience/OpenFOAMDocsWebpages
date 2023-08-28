@@ -8,7 +8,7 @@ contributors:
 hyde:
   brief: __MISSING__
   declaration: "template <class basicShapeType>\nstruct Foam::mff::basicShape::adddictionaryConstructorToTable;"
-  defined_in_file: https://github.com/FoamScience/MeshFreeFoam.git/blob/master/src/meshfree/shapes/basicShape/basicShape.H
+  defined_in_file: https://github.com/FoamScience/MeshFreeFoam/blob/master/src/meshfree/shapes/basicShape/basicShape.H
   namespace:
     - Foam
     - mff

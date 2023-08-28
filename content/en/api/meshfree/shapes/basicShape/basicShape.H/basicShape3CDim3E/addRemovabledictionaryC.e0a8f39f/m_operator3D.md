@@ -3,7 +3,7 @@ api_tags:
   - method
 hyde:
   brief: __OPTIONAL__
-  defined_in_file: https://github.com/FoamScience/MeshFreeFoam.git/blob/master/src/meshfree/shapes/basicShape/basicShape.H
+  defined_in_file: https://github.com/FoamScience/MeshFreeFoam/blob/master/src/meshfree/shapes/basicShape/basicShape.H
   overloads:
     void operator=(const addRemovabledictionaryConstructorToTable<basicShapeType> &):
       annotation:
