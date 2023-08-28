@@ -1,5 +1,5 @@
 baseURL = "/"
-title = "APIDocs"
+title = "MeshFreeFoam API Docs"
 enableEmoji = true
 
 # Language settings
@@ -47,7 +47,7 @@ id = "UA-00000000-0"
 languageName ="English"
 weight = 1
 [languages.en.params]
-title = "APIdocs"
+title = "API docs for MeshFreeFoam"
 description = "A solution for inline API documentation mess..."
 
 [markup]
@@ -92,8 +92,8 @@ version = "0.0"
 # point people to the main doc site.
 url_latest_version = "/"
 
-github_repo = "https://github.com/FoamScience/ApiDocsTemplate"
-github_project_repo = "https://github.com/FoamScience/ApiDocsTemplate"
+github_repo = "https://github.com/FoamScience/MeshFreeFoam-Docs"
+github_project_repo = "https://github.com/FoamScience/MeshFreeFoam"
 
 # Specify a value here if your content directory is not in your repo's root directory
 github_subdir = ""
@@ -128,8 +128,8 @@ sidebar_menu_foldable = true
 [params.ui.feedback]
 enable = false
 # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-yes = 'Glad to hear it! Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
-no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.'
+yes = 'Glad to hear it! Please <a href="https://github.com/FoamScience/MeshFreeFoam-Docs/issues/new">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://github.com/FoamScience/MeshFreeFoam-Docs/issues/new">tell us how we can improve</a>.'
 
 # Adds a reading time to the top of each doc.
 # If you want this feature, but occasionally need to remove the Reading time from a single page,
@@ -145,7 +145,7 @@ enable = true
   desc = "Discussion and help from your fellow users and devs"
 [[params.links.developer]]
   name = "GitHub"
-  url = "https://github.com/FoamScience/exampleRepo"
+  url = "https://github.com/FoamScience/MeshFreeFoam"
   icon = "fab fa-github"
   desc = "Development takes place here!"
 [[params.links.developer]]

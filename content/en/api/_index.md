@@ -1,5 +1,4 @@
 ---
-menu: {main: {weight: 20}}
 api_tags:
   - library
 contributors:
@@ -14,10 +13,8 @@ hyde:
   tags:
     - library
 layout: library
-title: Sample API
+menu:
+  main:
+    weight: 20
+title: MeshFreeFoam API
 ---
-
-{{% pageinfo %}}
-Here you'll find a full reference of the important code entities that some custom OpenFOAM libs use or provide.
-You can also the API tags on the right sidebar to navigate.
-{{% /pageinfo %}}
