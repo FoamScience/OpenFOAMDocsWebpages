@@ -14,7 +14,7 @@ hyde:
   inline:
     brief: Base interface to inner-domain discretizers
     owner: elwardi
-    warning: Not yet implemented
+    todo: Need to implement this
   namespace:
     - Foam
     - mff

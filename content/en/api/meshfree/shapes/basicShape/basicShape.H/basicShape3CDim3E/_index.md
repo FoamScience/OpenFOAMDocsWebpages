@@ -75,13 +75,23 @@ hyde:
         description:
           - '---------------------------------------------------------------------------*
             \ Class HashTable Declaration \ *---------------------------------------------------------------------------'
+      key: dictionaryConstructorCompatTableType
     dictionaryConstructorPtr:
       definition: autoPtr<basicShape<Dim>> (*)(const Foam::dictionary &)
       description: __MISSING__
+      key: dictionaryConstructorPtr
     dictionaryConstructorTableType:
       definition: ::Foam::HashTable<dictionaryConstructorPtr, ::Foam::word, ::Foam::Hash<
         ::Foam::word>>
       description: __MISSING__
+      key: dictionaryConstructorTableType
+    positionType:
+      definition: VectorSpace<Vector<Foam::scalar>, Foam::scalar, Dim>
+      description: __INLINED__
+      inline:
+        description:
+          - Point position type
+      key: positionType
 layout: class
 title: basicShape<Dim>
 ---
