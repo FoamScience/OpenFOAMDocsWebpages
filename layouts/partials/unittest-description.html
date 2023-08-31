@@ -1,0 +1,3 @@
+{{ $meta := .Page.Params.AllTestsForFile.Catch2TestRun }}
+<p>Tests were performed using Catch2 version {{ index $meta "@catch2-version" | partial "highlight-block.html" }}
+and the following filters: {{ index $meta "@filters" | partial "highlight-block.html" }} </p>

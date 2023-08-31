@@ -1,0 +1,47 @@
+{{ $cases := .Page.Params.AllTestsForFile.Catch2TestRun.TestCase }}
+{{ $type := (printf "%T" $cases) }}
+{{ if eq $type "[]interface {}" }}
+    {{ range $c := $cases }}
+    <h2>{{ index $c "@name" }}</h2>
+    <p>Defined in file:
+    <a href="{{ $.Site.Params.github_project_repo }}/tree/master/tests/{{ $.Page.Params.title }}/{{ index $c "@filename" }}#L{{ index $c "@line" }}">
+    {{ index $c "@filename" }}#L{{ index $c "@line" }}</a></p>
+    {{ $et := (printf "%T" $c.Expression) }}
+    {{ if eq $et "map[string]interface {}" }}
+        <p> With expression: </p>
+        <div>
+        <p>
+        {{ if eq (index $c.Expression "@success") "true" }}
+            <i class="fa fa-check -text-success"></i>
+        {{ else }}
+            <i class="fa fa-xmark -text-warning"></i>
+        {{ end }}
+        From file <a href="{{ $.Site.Params.github_project_repo }}/tree/master/tests/{{ $.Page.Params.title }}/{{ index $c.Expression "@filename" }}#L{{ index $c.Expression "@line" }}">
+            {{ index $c.Expression "@filename" }}#L{{ index $c.Expression "@line" }}</a>:<br>
+        {{ printf "%s ( %s )" (index $c.Expression "@type") ( index $c.Expression "Original" ) | partial "highlight-block.html" }}
+        which expands to:
+        {{ index $c.Expression "Expanded" | partial "highlight-block.html" }}
+        </p>
+        </div>
+    {{ else }}
+        <p> With expressions: </p>
+        {{ range $cexp := $c.Expression }}
+        <div>
+        <p>
+        {{ if eq (index $cexp "@success") "true" }}
+            <i class="fa fa-check -text-success"></i>
+        {{ else }}
+            <i class="fa fa-xmark -text-warning"></i>
+        {{ end }}
+        From file <a href="{{ $.Site.Params.github_project_repo }}/tree/master/tests/{{ $.Page.Params.title }}/{{ index $cexp "@filename" }}#L{{ index $cexp "@line" }}">
+            {{ index $cexp "@filename" }}#L{{ index $cexp "@line" }}</a>:<br>
+        {{ printf "%s ( %s )" (index $cexp "@type") ( index $cexp "Original" ) | partial "highlight-block.html" }}
+        which expands to:
+        {{ index $cexp "Expanded" | partial "highlight-block.html" }}
+        </p></div>
+        {{ end }}
+    {{ end }}
+    {{ end }}
+{{ else }}
+    is not interface
+{{ end }}
