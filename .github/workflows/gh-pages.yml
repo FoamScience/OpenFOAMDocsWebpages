@@ -6,6 +6,10 @@ on:
       - main
   pull_request:
 
+permissions:
+  deployments: write
+  contents: write
+  actions: write
 
 jobs:
   deploy:
