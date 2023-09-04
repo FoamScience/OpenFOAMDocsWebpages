@@ -40,15 +40,6 @@ hyde:
       description: __MISSING__
       key: dictionaryConstructorTablePtr_
       type: Foam::mff::basicShape::dictionaryConstructorTableType *
-    innerDiscretizer_:
-      annotation:
-        - protected
-      description: __INLINED__
-      inline:
-        description:
-          - Inner Discretizer
-      key: innerDiscretizer_
-      type: autoPtr<volumeDiscretizer<Dim>>
     typeName:
       description: __MISSING__
       key: typeName
