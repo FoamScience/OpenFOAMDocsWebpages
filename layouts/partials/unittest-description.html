@@ -1,3 +1,22 @@
 {{ $meta := .Page.Params.AllTestsForFile.Catch2TestRun }}
 <p>Tests were performed using Catch2 version {{ index $meta "@catch2-version" | partial "highlight-block.html" }}
 and the following filters: {{ index $meta "@filters" | partial "highlight-block.html" }} </p>
+
+<p><i class="fa-sharp fa-solid fa-check -text-primary"></i><span class="-text-primary">
+    {{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResultsCases "@successes" }}    Passing
+</span> test cases (<span class="-text-primary"> 
+        {{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResults "@successes" }}
+</span> expressions ),
+<span class="-text-warning">
+    {{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResultsCases "@failures" }}  failing
+    </span> (<span class="-text-warning"> 
+    {{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResults "@failures" }}  expressions
+
+    </span>
+    ). 
+    {{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResultsCases "@skips" }} test cases
+    were skipped ({{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResults "@skips" }} expressions)
+    and 
+    {{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResultsCases "@expectedFailures" }} test cases
+    were expected to fail ({{ index .Page.Params.AllTestsForFile.Catch2TestRun.OverallResults "@expectedFailures" }} expressions).
+</p>

@@ -2,7 +2,22 @@
 {{ $type := (printf "%T" $cases) }}
 {{ if eq $type "[]interface {}" }}
     {{ range $c := $cases }}
-    <h2>{{ index $c "@name" }}</h2>
+    {{ $name := index $c "@name" }}
+    {{ $splits := split $name "-" }}
+    {{ if eq (len $splits) 1 }}
+    <h2>{{ $name }}</h2>
+    {{ else }}
+    <h2>{{ index $splits 0 }} with template arguments:
+    {{ range $idx, $val := $splits }}
+    {{ if not (eq $idx 0 ) }}
+    {{ $val }}
+    {{ if not (eq $idx (add (len $splits) -1) ) }}
+    ,
+    {{ end }}
+    {{ end }}
+    {{ end }}
+    </h2>
+    {{ end }}
     <p>Defined in file:
     <a href="{{ $.Site.Params.github_project_repo }}/tree/master/tests/{{ $.Page.Params.libname }}/{{ index $c "@filename" }}#L{{ index $c "@line" }}">
     {{ index $c "@filename" }}#L{{ index $c "@line" }}</a></p>
