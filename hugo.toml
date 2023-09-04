@@ -1,4 +1,4 @@
-baseURL = "https://meshfreefoam.github.io/"
+baseURL = "https://foamscience.github.io/MeshFreeFoam-Docs/"
 title = "MeshFreeFoam API Docs"
 enableEmoji = true
 
