@@ -2,7 +2,7 @@
 date: 2023-09-27
 title: "Lazy Evaluation: Part 1"
 linkTitle: Lazy evaluation 1
-weight: 6
+weight: 7
 description: >
     In this short, I explore the viability of implementing lazily-evaluated operations for MeshFreeFoam
     as opposed to the default eager evaluation for OpenFOAM fields. As this is a PhD project and I have
@@ -66,7 +66,7 @@ Thus, the next best thing, is a partial expression system which evaluates on ass
 ## Lazy evaluation with views
 
 {{% alert title="Warning" color="warning" %}}
-NVIDIA's HC c++ compilers at the moment support only C++17; [using stdpar](https://developer.nvidia.com/blog/accelerating-standard-c-with-gpus-using-stdpar/) will prove difficult if decided to use views. So, for now, it's either to optimize for CPU; **or** use the GPU. We can't do both as working comfortably with views requires C++23.
+NVIDIA's HPC c++ compilers at the moment support only C++17; [using stdpar](https://developer.nvidia.com/blog/accelerating-standard-c-with-gpus-using-stdpar/) will prove difficult if decided to use views. So, for now, it's either to optimize for CPU; **or** use the GPU. We can't do both as working comfortably with views requires C++23.
 {{% /alert %}}
 
 In particular, C++20 introduces `views` which are special kinds of ranges which do not own their data. Think of them as views into the CFD fields. These were perfect for other purposes too, for example, implementation of fit-in-L2-cache subdomains for MeshFreeFoam.
