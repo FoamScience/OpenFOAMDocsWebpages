@@ -15,13 +15,13 @@ tags:
 
 ## KdTree and radius-based searches
 
-After sweeping the existing C++ libraries capable of doing k-nearest neighbor (KNN) search with unsorted radius queries, I have reached the conclusion of using [nanoflann](https://github.com/jlblancoc/nanoflann) as a backend for such searches.
+When it comes to k-nearest neighbor (KNN) searches with unsorted radius queries in C++, I've decided to utilize [nanoflann](https://github.com/jlblancoc/nanoflann) as the backend for these operations.
 
-Their API is nice and easy to use but with one specific caveat: The dynamic `KdTree` is not trivial to use. After putting up some unit tests to the KdTree wrapper, I quickly discovered that changing the list of point positions we perform searches against is not fun. My current solution is to hash the current content of the list and check it again on each KNN search!
+Their API is user-friendly, but there's a specific challenge with the dynamic `KdTree`. During my testing of the KdTree wrapper, I noticed that modifying the list of point positions for searches can be tricky. To address this, I've implemented a solution where I hash the current list and compare it before each KNN search.
 
-If the list of points has been radically changed, the KdTree index will be invalid; so we need to reset it. But, if the list is only being appended to (no changes to old elements), the new points are added to the index.
+If the point list has undergone significant changes, the KdTree index becomes invalid and needs resetting. However, if the list only receives new points without alterations to old ones, I simply add the new points to the index.
 
-At this point, I have mainly three unanswered question:
-- How efficient is to hash the point list?
-- How efficient OpenFOAM's implementation of Jenkins hasher is?
-- How efficient is to reset the KdTree index (compared to remove all points and add add the new ones)?
+At this point, I have three key unanswered questions:
+- What's the efficiency of hashing the point list?
+- How efficient is OpenFOAM's implementation of the Jenkins hasher?
+- Is resetting the KdTree index efficient compared to removing all points and adding the new ones?

@@ -4,10 +4,10 @@ title: "Lazy Evaluation: Part 1"
 linkTitle: Lazy evaluation 1
 weight: 7
 description: >
-    In this short, I explore the viability of implementing lazily-evaluated operations for MeshFreeFoam
-    as opposed to the default eager evaluation for OpenFOAM fields. As this is a PhD project and I have
-    limited time to produce tangible results, this is no longer a performance question. Multiple factors,
-    inclucing code maintainability, have to be considered.
+    In this short post, I examine the feasibility of implementing lazily-evaluated operations for MeshFreeFoam,
+    contrasting them with the default eager evaluation used for OpenFOAM fields. Given the time constraints of
+    my PhD project, performance is no longer the only concern. Multiple factors, including code maintainability,
+    must be taken into account."
 author: Mohammed Elwardi Fadeli ([@elwardi](https://www.linkedin.com/in/elwardi-fadeli))
 tags:
   - c++
@@ -112,7 +112,7 @@ struct BinaryContainerExpression
 };
 {{< /card >}}
 
-It's worth noting that on [Github machines]() the execution time of lazy evaluations is a third of that of eager evaluations; while on my local machine, it's around 50%. For the record, the test machine has the following properties:
+It's worth noting that on [GitHub machines](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources) the execution time of lazy evaluations is a third of that of eager evaluations; while on my local machine, it's around 50%. For the record, the test machine has the following properties:
 ```
 System:    Kernel: 5.15.0-10078* x86_64 bits: 64 compiler: N/A Desktop: Gnome 3.36.9 
            Distro: Ubuntu 20.04.6 LTS (Focal Fossa) 
