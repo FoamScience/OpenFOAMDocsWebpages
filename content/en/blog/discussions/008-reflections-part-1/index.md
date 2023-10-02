@@ -27,13 +27,15 @@ The perfect implementation of a reflection system for OpenFOAM-based code will:
 
 ## Current plans
 
-It doesn't seem like a lot of work, but the challenges lie in meeting my specific requirements 1 and 2 above. There are two ways to achieve this:
+It doesn't seem like a lot of work, but the challenges lie in meeting my specific requirements 1 and 2 above. There are few ways to achieve this:
 
 1. [Building a C++ Reflection System in One Weekend Using Clang and LLVM](https://youtu.be/DUiUBt-fqEY) demonstrates a method using compiler magic to generate reflection code. It parses the headers' AST and generates C++ files to include in the final compilation units. This approach is not preferred due to two main reasons:
    - It requires annotating classes and fields for reflection.
    - A separate tool must run on the classes' headers with the correct compiler flags set to generate the reflection code, adding maintenance overhead.
 
 2. [refl-cpp](https://github.com/veselink1/refl-cpp) implements a version without parsing the AST, which is the preferred approach. It will serve as the main inspiration for developing the reflection system.
+
+3. [C++ Reflection TS](https://clementpirelli.wordpress.com/2021/12/08/cpp-reflection-ts-first-look/) can be option for future projects. But as, at best, It'll make into the standard by c++26, and we'll have to wait for 1-2 years for compiler support, it's better if we don't rely on such experimental proposals. Currently, only `clang` can compile code from the proposal. 
 
 Work on this front will begin as soon as I can visualize the meshfree domain (i.e., the particles) with ParaView. Immediate issues that must be addressed include:
 - Ensuring both the reflection system and the runtime selection mechanism can coexist smoothly.
