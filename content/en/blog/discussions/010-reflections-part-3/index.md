@@ -64,7 +64,7 @@ will result in the following schema:
     vv              ( 0 0 0 );
 }
 ```
-for a child type which has the following members (Both the nested RTS model `subModel_`, the `type_` member don't show up in the earlier schema):
+for a child type which has the following members (Both the nested RTS model `subModel_` and the `type_` member now show up in the schema):
 ```
 childModel : public baseModel
 |--> type_     (word)
@@ -157,9 +157,26 @@ As it stands now, the schemas will suggest default values for members as in "def
 
 This turns out not be so easy. One idea that comes to mind is to first create a schema for the target type ignoring all optional members; then use that schema to actually create an object of the target type. From there, it only remains to check the values of the optional members.
 
-But this is not possible since objects can be creating from all kinds of objects (and not just from a dictionary) and restricting that doesn't look like a good idea.
+But this is not possible since objects can be created from all kinds of objects (and not just from a dictionary) and restricting that doesn't look like a good idea.
 
-### Complete nested models schemas???
+To achieve this effect, we would have to use complex members holding their metadata; such as:
+```cpp
+class baseModel
+{
+    struct alpha {
+        static constexpr int min_ = 0;
+        static constexpr int max_ = 10;
+        static const int default_ = 1;
+        static constexpr std::string_view name_ = "alpha";
+        static constexpr std::string_view description_ = "cool description of alpha";
+        int v;
+    } alpha;
+};
+```
+
+We could then use `alpha.default` to initialize `alpha`; and it is accessible through the reflection system. Since it's a `constexpr`; this adds no runtime costs. The thing is, the default value for non-linear types will need to be initialized out-of-line. Using the reflection system for default values is possible for literal types only since non-literals cannot generally be `constexpr` (at the moment, there is no support for `constexpr std::vector` in any compiler!).
+
+### Complete nested model schemas???
 
 If we look closely at the generated schema from the previous example:
 ```
@@ -178,11 +195,11 @@ If we look closely at the generated schema from the previous example:
     vv              ( 0 0 0 );
 }
 ```
-we can see that the `subModel` shows only members of the base class. To make it show the full array of members of the concrete type, the user can prompted to pick a valid model, and then `baseModel::schema("pickedModel")` will be called inside `builder::schema<baseModel>()` instead of calling `builder::schema<memberBaseType>()`. This scenario is particularly in building GUIs.
+we can see that the `subModel` shows only members of the base class. To make it show the full array of members of the concrete type, the user can be prompted to pick a valid model, and then `baseModel::schema("pickedModel")` will be called inside `builder::schema<baseModel>()` instead of calling `builder::schema<memberBaseType>()`. This scenario is particularly useful in building GUIs.
 
 ## Conclusion
 
-At this points, all of the design goals mentioned back in [Part 1](/blog/2023/09/29/a-reflection-system-for-meshfreefoam-part-1/) have been achieved. Except for minor changes, I will not develop the system any further.
+At this point, all of the design goals mentioned back in [Part 1](/blog/2023/09/29/a-reflection-system-for-meshfreefoam-part-1/) have been achieved. Except for minor changes, I will not develop the system any further.
 
 Use cases are exclusively **(automatically) generating schemas for OpenFOAM classes** and **(again automatically) building GUI widgets for target types**
 
