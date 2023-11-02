@@ -26,16 +26,16 @@ This practically applies to any library that is hard to merge my changes into an
 
 ## Dependency management workflow
 
-The workflow to manage my dependencies revolves around the following concepts:
-- Have a central repository for all dependencies in case I change stuff in their code.
-- Include that repo as a submodule/subtree in the main project.
-- Customizing the dependency code should be as streamlined as possible, without losing the ability to pull changes from upstream repos.
+The workflow to manage my dependencies revolves around the following concepts and ideas:
+- I need a way to significantly customize OpenFOAM libs while keeping the ability to pull updates from upstream repo.
+- Keep the full git history for each file I use from the upstream repo.
+- Switching dependency libs should be easy. A few conflicts are fine, but no significant code refactoring should be necessary.
 
 ### How to make OpenFOAM libs available as dependencies
 
 There are scripts to automatize this process, but I will explain the most important steps here:
 
-We start by cloning the project, filtering the paths we need, then tagging the state as `original` (You'll need [git-filter-repo](https://github.com/newren/git-filter-repo/) for this).
+We start by cloning the OpenFOAM project, filtering the paths we need (You'll need [git-filter-repo](https://github.com/newren/git-filter-repo/) for this).
 ```bash
 git clone https://develop.openfoam.com/Development/openfoam /tmp/openfoam-scratch
 cd /tmp/openfoam-scratch
@@ -44,23 +44,25 @@ git filter-repo --path COPYING --path Allwmake --path bin --path etc --path src/
     --path META-INFO/ --path wmake --force
 ```
 
-Next, in the dependencies repo, add this as a subtree, and make a branch for `original` OpenFOAM commits:
+Next, in the target project repo, add the mutilated OpenFOAM repository as a subtree, and make a branch for `original` OpenFOAM commits there:
 ```bash
 cd /path/to/repo/root
 git subtree add --prefix dependencies/meshfree-openfoam /tmp/openfoam-scratch/ master
 git checkout -b original-openfoam
 ```
 
-Switch back to master, and commit the custom changes we need:
+Switch back to master (or whatever your main branch is called), do some changes, and commit:
 ```bash
 git checkout master
 git add -A
 git commit -m "Update OpenFOAM compilation"
 ```
 
+The changes you make will obviously be related to your target project, so it's a good idea to keep those commits in your main repository instead of managing a zillion dependency repositories.
+
 Updates from the original repo come in two forms:
-- New change commits. These may cause conflicts with our changes, so rebasing will allow us to solve them.
-- New libraries we want to add. These are also new commits, but we know they won't cause trouble since they only add files to `original`. We only have to remember to update `Allwmake` scripts to compile those new libraries.
+- New change commits. These may cause conflicts with our changes, so rebasing will allow us to solve them if done frequently enough.
+- New libraries we want to add. These are also new commits, but we know they won't cause trouble since they only add files to `original` branch. We only have to remember to update `Allwmake` scripts to compile those new libraries.
 
 Here is how to add `src/fileFormats` and `src/surfMesh` libraries from OpenFOAM:
 ```bash
