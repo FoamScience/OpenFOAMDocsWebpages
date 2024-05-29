@@ -7,18 +7,6 @@
 {{ $s.Add "contribs" (slice .) }}
 {{ end }}
 {{ end }}
-
-{{ $pgs := where .Site.Pages "File.Dir" "like" .File.Dir }}
-{{ range $pgs }}
-{{ with .Params.contributors }}
-{{ $type := (printf "%T" .) }}
-{{ if eq $type "[]string" }}
-{{ $s.Add "contribs" . }}
-{{ else }}
-{{ $s.Add "contribs" (slice .) }}
-{{ end }}
-{{ end }}
-{{ end }}
 {{ $contribs := uniq ($s.Get "contribs") }}
 
 {{ if $contribs }}

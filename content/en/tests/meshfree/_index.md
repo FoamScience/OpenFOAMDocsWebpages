@@ -1,6 +1,4 @@
 ---
-title: meshfree
-layout: unittest
+title: Unit Tests
+layout: unittests
 ---
-
-Here you'll find reports for unit tests for the `meshfree` library as in the latest `MeshFreeFoam` master commit.
