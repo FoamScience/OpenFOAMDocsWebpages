@@ -16,7 +16,7 @@
     {{ range $idx,$val := $contribs }}
     {{ $len := (len $contribs) }}
     {{ $c := index (where $allpgs ".Data.Term" "==" ($val | urlize) ) 0 }}
-    <a href="/contributors/{{ $val | urlize }}">{{ $c.Params.title }}</a>
+    <a href="/MeshFreeFoam-Docs/contributors/{{ $val | urlize }}">{{ $c.Params.title }}</a>
     {{ if or $c.Params.linkedin $c.Params.github }}
     (
     {{ if or $c.Params.linkedin }}
