@@ -6,4 +6,4 @@ and can be changed manually while keeping the changes between consecutive docs b
 
 ## Documentation
 
-Head to the [example site](https://foamscience.github.io/odw) to get started.
+Head to the [example site](https://foamscience.github.io/OpenFOAMDocsWebpages) to get started.
