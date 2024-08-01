@@ -1,16 +1,16 @@
 ---
 contributors: []
 layout: library
-title: lib1/sampleBC/sampleBCFvPatchField.C
+title: lib1/sampleBC/sampleBCFvPatchField.H
 url: /api/doc_lib1__sampleBC__sampleBCFvPatchField
 ---
 
 
 
 ``` cpp
-#include "sampleBCFvPatchField.H"
-```
-ace Foam
+#define sampleBCFvPatchField_H
+
+namespace Foam
 {
     template <class Type>
     class sampleBCFvPatchField;

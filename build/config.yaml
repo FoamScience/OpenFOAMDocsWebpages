@@ -16,7 +16,7 @@ containers:
       definition: build/odw.def
       build_args:
         hugo_version:
-          - 0.110.0
+          - 0.130.0
         standardese_version:
           - 0.5.2
 pull:
