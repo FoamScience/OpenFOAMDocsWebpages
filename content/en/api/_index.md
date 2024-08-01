@@ -16,5 +16,5 @@ layout: library
 menu:
   main:
     weight: 20
-title: MeshFreeFoam API
+title: Project API
 ---
