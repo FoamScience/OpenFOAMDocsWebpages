@@ -6,3 +6,5 @@ package-lock.json
 compile_commands.json
 linux*
 containers/
+.cache/
+lnInclude/

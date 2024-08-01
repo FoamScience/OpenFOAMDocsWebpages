@@ -1,0 +1,12 @@
+#!/bin/sh
+# Run from top-level directory only
+cd "${0%/*}" || exit
+
+wclean src/lib1
+cd src/lib1
+bear -- wmake libso
+cd -
+wclean src/lib2
+cd src/lib1
+bear -- wmake libso
+cd -
