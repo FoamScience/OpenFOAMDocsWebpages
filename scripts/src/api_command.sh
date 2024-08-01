@@ -19,7 +19,7 @@ standardese src \
     $compile_commands \
     --input.force_blacklist 1 \
     --comment.command_character "@" \
-    --output.link_prefix "/api/"
+    --output.link_prefix "/api/headers/"
 rm -f "$DOCS_DIR/content/en/api/headers/doc*md"
 for fl in doc_*md standardese*md; do
     python "$DOCS_DIR"/scripts/process-fm.py $fl

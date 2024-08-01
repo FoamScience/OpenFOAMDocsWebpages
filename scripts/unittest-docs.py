@@ -2,12 +2,12 @@
 import re, sys, io, os, json
 import frontmatter
 
-if len(sys.argv) != 3:
-    print(f"Usage: {sys.argv[0]} <path-to-report-json-files> <output-md-file>")
+if len(sys.argv) != 5:
+    print(f"Usage: {sys.argv[0]} <path-to-report-json-files> <output-md-file> <code-repo-URL> <branch>")
     sys.exit(1)
 
 def build_link(libname, filename, line):
-    return f"[{filename}#{line}](https://github.com/FoamScience/MeshFreeFoam/blob/master/tests/{libname}/{filename}#L{line})"
+    return f"[{filename}#{line}]({sys.argv[3]}/blob/{sys.argv[4]}/tests/{libname}/{filename}#L{line})"
 
 def parse_path(path, libname, name, content):
     newcontent = content

@@ -6,4 +6,4 @@ tags: [docs]
 weight: 2
 ---
 
-Check the [Overview](/docs/Overview) page before anything else. Then you may proceed to installing the dependencies and getting your site up and running.
+Check the [Overview]({{% ref "/docs/Overview" %}}) page before anything else. Then you may proceed to installing the dependencies and getting your site up and running.

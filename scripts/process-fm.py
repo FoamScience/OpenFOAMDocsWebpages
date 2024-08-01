@@ -40,9 +40,9 @@ def check_links(markdown_content):
         fragment = match.group(3)
         if fragment:
             new_fragment = fragment.lower()
-            new_link = f"[{link_text}]({link_url}{new_fragment})"
+            new_link = f'[{link_text}]({{{{% ref "{link_url}{new_fragment}" %}}}})'
         else:
-            new_link = f"[{link_text}]({link_url})"
+            new_link = f'[{link_text}]({{{{% ref "{link_url}" %}}}})'
         return new_link
     content = re.sub(frag_pattern, replace_frag, content, flags=re.MULTILINE | re.DOTALL)
     empty_pattern = r'\[` *`\]\((.*?)#(.*?)\)'
@@ -59,6 +59,13 @@ def check_links(markdown_content):
 with open(sys.argv[1], 'r') as file:
     markdown_content = file.read()
 
+outfile = {
+    sys.argv[1]: f"{os.environ.get('DOCS_DIR')}/content/en/api/headers/{sys.argv[1]}",
+    'standardese_files.md': f"{os.environ.get('DOCS_DIR')}/content/en/api/headers/_index.md",
+    'standardese_modules.md': f"{os.environ.get('DOCS_DIR')}/content/en/api/modules/_index.md",
+    'standardese_entities.md': f"{os.environ.get('DOCS_DIR')}/content/en/api/entities/_index.md",
+}
+
 # Extract title and contributors
 title, content = extract_title(markdown_content)
 content = check_links(content)
@@ -70,13 +77,6 @@ contributors = extract_contributors(markdown_content)
 os.makedirs(f"{os.environ.get('DOCS_DIR')}/content/en/api/headers", exist_ok=True)
 os.makedirs(f"{os.environ.get('DOCS_DIR')}/content/en/api/modules", exist_ok=True)
 os.makedirs(f"{os.environ.get('DOCS_DIR')}/content/en/api/entities", exist_ok=True)
-
-outfile = {
-    sys.argv[1]: f"{os.environ.get('DOCS_DIR')}/content/en/api/headers/{sys.argv[1]}",
-    'standardese_files.md': f"{os.environ.get('DOCS_DIR')}/content/en/api/headers/_index.md",
-    'standardese_modules.md': f"{os.environ.get('DOCS_DIR')}/content/en/api/modules/_index.md",
-    'standardese_entities.md': f"{os.environ.get('DOCS_DIR')}/content/en/api/entities/_index.md",
-}
 
 file_title = {
     sys.argv[1]: title,

@@ -58,6 +58,10 @@ description = "A solution for inline API documentation mess..."
       unsafe = true
       hardWraps = true
       xhtml = true
+    [markup.goldmark.renderHooks.link]
+      enableDefault = false
+
+
 
   [markup.highlight]
     # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
@@ -141,7 +145,7 @@ enable = true
 [params.links]
 [[params.links.user]]
   name = "Discord server"
-  url = "https://discord/invitation/link"
+  url = "https://example.com/discord"
   icon = "fab fa-discord"
   desc = "Discussion and help from your fellow users and devs"
 [[params.links.developer]]
@@ -151,7 +155,7 @@ enable = true
   desc = "Development takes place here!"
 [[params.links.developer]]
   name = "Slack"
-  url = "https://example.org/slack"
+  url = "https://example.com/slack"
   icon = "fab fa-slack"
   desc = "Chat with other project developers"
 

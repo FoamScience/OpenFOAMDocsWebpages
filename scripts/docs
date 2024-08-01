@@ -235,7 +235,7 @@ docs_api_command() {
       $compile_commands \
       --input.force_blacklist 1 \
       --comment.command_character "@" \
-      --output.link_prefix "/api/"
+      --output.link_prefix "/api/headers/"
   rm -f "$DOCS_DIR/content/en/api/headers/doc*md"
   for fl in doc_*md standardese*md; do
       python "$DOCS_DIR"/scripts/process-fm.py $fl
@@ -252,6 +252,8 @@ docs_unittests_command() {
   _repo_root=$(git rev-parse --show-toplevel)
   curr_pwd=$PWD
   cd "$_repo_root" || exit
+  branch=$(git branch --show-current)
+  remote=$(git remote get-url origin)
   echo "Updating Docs for unit tests"
   if [ -d "$PWD/testCases" ]; then
       rm -rf "$FOAM_FOAMUT"/cases
@@ -292,7 +294,7 @@ docs_unittests_command() {
           mv "$FOAM_FOAMUT/reports/${libname}"* "$FOAM_FOAMUT/reports/docs/${libname}/${name%.C}"
           cd - || exit
           echo "Generating docs for $TESTS_DOCS/${libname}/${name%.C}.md"
-          $DOCS_DIR/scripts/unittest-docs.py "$FOAM_FOAMUT/reports/docs/${libname}/${name%.C}" "$TESTS_DOCS/${libname}/${name%.C}.md"
+          $DOCS_DIR/scripts/unittest-docs.py "$FOAM_FOAMUT/reports/docs/${libname}/${name%.C}" "$TESTS_DOCS/${libname}/${name%.C}.md" $remote $branch
       done
   done
   set -e

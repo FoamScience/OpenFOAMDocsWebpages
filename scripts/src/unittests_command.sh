@@ -2,6 +2,8 @@
 _repo_root=$(git rev-parse --show-toplevel)
 curr_pwd=$PWD
 cd "$_repo_root" || exit
+branch=$(git branch --show-current)
+remote=$(git remote get-url origin)
 echo "Updating Docs for unit tests"
 if [ -d "$PWD/testCases" ]; then
     rm -rf "$FOAM_FOAMUT"/cases
@@ -42,7 +44,7 @@ for lib in $libs; do
         mv "$FOAM_FOAMUT/reports/${libname}"* "$FOAM_FOAMUT/reports/docs/${libname}/${name%.C}"
         cd - || exit
         echo "Generating docs for $TESTS_DOCS/${libname}/${name%.C}.md"
-        $DOCS_DIR/scripts/unittest-docs.py "$FOAM_FOAMUT/reports/docs/${libname}/${name%.C}" "$TESTS_DOCS/${libname}/${name%.C}.md"
+        $DOCS_DIR/scripts/unittest-docs.py "$FOAM_FOAMUT/reports/docs/${libname}/${name%.C}" "$TESTS_DOCS/${libname}/${name%.C}.md" $remote $branch
     done
 done
 set -e
