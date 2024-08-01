@@ -1,159 +1,139 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MeshFreeFoam API Docs – Header Files</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/headers/</link><description>Recent content in Header Files on MeshFreeFoam API Docs</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://foamscience.github.io/MeshFreeFoam-Docs/api/headers/index.xml" rel="self" type="application/rss+xml"/><item><title>Api: meshfree/includes/addToTemplatedRunTimeSelection.H</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__includes__addToTemplatedRunTimeSelection/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__includes__addToTemplatedRunTimeSelection/</guid><description>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#define addToTemplatedRunTimeSelection_H
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== author:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#579">#define makeTemplatedModel(baseType, childType, TargName, Targs...)
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>A set of macros to have a variable number of template arguments working with OpenFOAM’s RunTime Selection mechanism.&lt;/p>
-&lt;p>Recycled from &lt;a href="https://github.com/FoamScience/OpenFOAM-Templated-RunTime-Selection">OpenFOAM-TRTS repo&lt;/a>&lt;/p>
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-maketemplatedmodel" href="#standardese-maketemplatedmodel">&lt;/a>&lt;/p>
-&lt;h2 id="maketemplatedmodel">makeTemplatedModel&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#define makeTemplatedModel(baseType, childType, TargName, Targs...)
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Macro to add a templated model to the run-time selection table&lt;/p>
-&lt;hr /></description></item><item><title>Api: meshfree/includes/meshlessConcepts.H</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__includes__meshlessConcepts/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__includes__meshlessConcepts/</guid><description>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#define meshlessConcepts_H
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== author:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Automated API and Unit testing Docs for OpenFOAM libs – Header Files</title><link>https://foamscience.github.io/odw/api/headers/</link><description>Recent content in Header Files on Automated API and Unit testing Docs for OpenFOAM libs</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://foamscience.github.io/odw/api/headers/index.xml" rel="self" type="application/rss+xml"/><item><title>Api: lib1/sample.C</title><link>https://foamscience.github.io/odw/api/doc_lib1__sample/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/api/doc_lib1__sample/</guid><description>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">namespace&lt;/span> mff
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> PositionType &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t){{T&lt;span style="color:#333">::&lt;/span>nComponents}&lt;span style="color:#333">-&amp;gt;&lt;/span>std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">int&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>;{std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>T, VectorSpace&lt;span style="color:#333">&amp;lt;&lt;/span>Vector&lt;span style="color:#333">&amp;lt;&lt;/span>scalar&lt;span style="color:#333">&amp;gt;&lt;/span>, scalar, T&lt;span style="color:#333">::&lt;/span>nComponents&lt;span style="color:#333">&amp;gt;&amp;gt;&lt;/span>};}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">using&lt;/span> coolType1 &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#339;font-weight:bold">int&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>, &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">Cmpt&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> RAContainer &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t, Cmpt c){std&lt;span style="color:#333">::&lt;/span>ranges&lt;span style="color:#333">::&lt;/span>random_access_range&lt;span style="color:#333">&amp;lt;&lt;/span>Cmpt&lt;span style="color:#333">&amp;gt;&lt;/span>;}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">using&lt;/span> coolType2 &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#339;font-weight:bold">int&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>, &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">Point&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> CallableWithPositions &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t, Point p){{t(p)}&lt;span style="color:#333">-&amp;gt;&lt;/span>std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>scalar&lt;span style="color:#333">&amp;gt;&lt;/span>;PositionType&lt;span style="color:#333">&amp;lt;&lt;/span>Point&lt;span style="color:#333">&amp;gt;&lt;/span>;}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>, &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">Point&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> Shape &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t, Point p){{t.contains(p)}&lt;span style="color:#333">-&amp;gt;&lt;/span>std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">bool&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>;}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">static&lt;/span> &lt;span style="color:#080;font-weight:bold">constexpr&lt;/span> &lt;span style="color:#339;font-weight:bold">int&lt;/span> &lt;span style="color:#080;font-weight:bold">const&lt;/span> intConstExpr &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#00d;font-weight:bold">42&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Concepts that enable meta-programming in the core meshless library&lt;/p>
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__mff__positiontype" href="#standardese-foam__mff__positiontype">&lt;/a>&lt;/p>
-&lt;h3 id="foammffpositiontype">Foam::mff::PositionType&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> PositionType &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t){{T&lt;span style="color:#333">::&lt;/span>nComponents}&lt;span style="color:#333">-&amp;gt;&lt;/span>std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">int&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>;{std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>T, VectorSpace&lt;span style="color:#333">&amp;lt;&lt;/span>Vector&lt;span style="color:#333">&amp;lt;&lt;/span>scalar&lt;span style="color:#333">&amp;gt;&lt;/span>, scalar, T&lt;span style="color:#333">::&lt;/span>nComponents&lt;span style="color:#333">&amp;gt;&amp;gt;&lt;/span>};}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Concept checking that a type is a VectorSpace instance with scalar components. The number of components needs to be a constexpr from &lt;code>T::dim&lt;/code>&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__cooltype1" href="#standardese-foam__cooltype1">&lt;/a>&lt;/p>
+&lt;h3 id="foamcooltype1">Foam::coolType1&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">using&lt;/span> coolType1 &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#339;font-weight:bold">int&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Global typedef using using. Not a typo :face_with_tears_of_joy:&lt;/p>
 &lt;hr />
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__mff__racontainer" href="#standardese-foam__mff__racontainer">&lt;/a>&lt;/p>
-&lt;h3 id="foammffracontainer">Foam::mff::RAContainer&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>, &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">Cmpt&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> RAContainer &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t, Cmpt c){std&lt;span style="color:#333">::&lt;/span>ranges&lt;span style="color:#333">::&lt;/span>random_access_range&lt;span style="color:#333">&amp;lt;&lt;/span>Cmpt&lt;span style="color:#333">&amp;gt;&lt;/span>;}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Concept checking for requirements of OpenFOAM containers with random access iterators&lt;/p>
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__cooltype2" href="#standardese-foam__cooltype2">&lt;/a>&lt;/p>
+&lt;h3 id="foamcooltype2">Foam::coolType2&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">using&lt;/span> coolType2 &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#339;font-weight:bold">int&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Global typedef using typedef. Also not a typo :face_with_hand_over_mouth:&lt;/p>
 &lt;hr />
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__mff__callablewithpositions" href="#standardese-foam__mff__callablewithpositions">&lt;/a>&lt;/p>
-&lt;h3 id="foammffcallablewithpositions">Foam::mff::CallableWithPositions&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>, &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">Point&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> CallableWithPositions &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t, Point p){{t(p)}&lt;span style="color:#333">-&amp;gt;&lt;/span>std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>scalar&lt;span style="color:#333">&amp;gt;&lt;/span>;PositionType&lt;span style="color:#333">&amp;lt;&lt;/span>Point&lt;span style="color:#333">&amp;gt;&lt;/span>;}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Concept checking for requirements of callables with positions and returning a scalar&lt;/p>
-&lt;hr />
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__mff__shape" href="#standardese-foam__mff__shape">&lt;/a>&lt;/p>
-&lt;h3 id="foammffshape">Foam::mff::Shape&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>, &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">Point&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>&lt;span style="color:#080;font-weight:bold">concept&lt;/span> Shape &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">requires&lt;/span>(T t, Point p){{t.contains(p)}&lt;span style="color:#333">-&amp;gt;&lt;/span>std&lt;span style="color:#333">::&lt;/span>convertible_to&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">bool&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>;}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Concept checking for requirements of shape types&lt;/p>
-&lt;hr /></description></item><item><title>Api: meshfree/includes/TemplatedRunTimeSelection.H</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__includes__TemplatedRunTimeSelection/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__includes__TemplatedRunTimeSelection/</guid><description>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#define TemplatedRunTimeSelection_H
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__intconstexpr" href="#standardese-foam__intconstexpr">&lt;/a>&lt;/p>
+&lt;h3 id="foamintconstexpr">Foam::intConstExpr&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">static&lt;/span> &lt;span style="color:#080;font-weight:bold">constexpr&lt;/span> &lt;span style="color:#339;font-weight:bold">int&lt;/span> &lt;span style="color:#080;font-weight:bold">const&lt;/span> intConstExpr &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#00d;font-weight:bold">42&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>An initialized constexpr&lt;/p>
+&lt;hr /></description></item><item><title>Api: lib1/sampleBC/sampleBCFvPatchField.C</title><link>https://foamscience.github.io/odw/api/doc_lib1__sampleBC__sampleBCFvPatchField/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/api/doc_lib1__sampleBC__sampleBCFvPatchField/</guid><description>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#include&lt;/span> &lt;span style="color:#579">&amp;#34;sampleBCFvPatchField.H&amp;#34;&lt;/span>&lt;span style="color:#579">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ace Foam&lt;br />
+{&lt;br />
+template &lt;class Type>&lt;br />
+class sampleBCFvPatchField;&lt;br />
+}&lt;/p>
+&lt;pre tabindex="0">&lt;code>&lt;/code>&lt;/pre></description></item><item><title>Api: lib1/sampleBC/sampleBCFvPatchFields.C</title><link>https://foamscience.github.io/odw/api/doc_lib1__sampleBC__sampleBCFvPatchFields/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/api/doc_lib1__sampleBC__sampleBCFvPatchFields/</guid><description>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#include&lt;/span> &lt;span style="color:#579">&amp;#34;sampleBCFvPatchFields.H&amp;#34;&lt;/span>&lt;span style="color:#579">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== author:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#579">#define defineVariadicTemplatedRunTimeSelectionTablePtr(baseType, argNames, Targs...)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== author:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#579">#define defineVariadicTemplatedRunTimeSelectionTable(baseType, Targs...)
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>A set of macros to define runtime selection tables for templates with variadic arguments Recycled from &lt;a href="https://github.com/FoamScience/OpenFOAM-Templated-RunTime-Selection">OpenFOAM-TRTS repo&lt;/a>&lt;/p>
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-definevariadictemplatedruntimeselectiontableptr" href="#standardese-definevariadictemplatedruntimeselectiontableptr">&lt;/a>&lt;/p>
-&lt;h2 id="definevariadictemplatedruntimeselectiontableptr">defineVariadicTemplatedRunTimeSelectionTablePtr&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#define defineVariadicTemplatedRunTimeSelectionTablePtr(baseType, argNames, Targs...)
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Macro to define a base-RTS templated model with variadic arguments&lt;/p>
-&lt;hr />
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-definevariadictemplatedruntimeselectiontable" href="#standardese-definevariadictemplatedruntimeselectiontable">&lt;/a>&lt;/p>
-&lt;h2 id="definevariadictemplatedruntimeselectiontable">defineVariadicTemplatedRunTimeSelectionTable&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#define defineVariadicTemplatedRunTimeSelectionTable(baseType, Targs...)
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Macro to define a dictionary-RTS templated model with variadic arguments&lt;/p>
-&lt;hr /></description></item><item><title>Api: meshfree/kdTrees/nanoflannKDTree/nanoflannKDTrees.C</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__kdTrees__nanoflannKDTree__nanoflannKDTrees/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__kdTrees__nanoflannKDTree__nanoflannKDTrees/</guid><description>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== author:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">namespace&lt;/span> mff
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">nanoflannKDTree&lt;/span>&lt;span style="color:#333">&amp;lt;&lt;/span>vector2D, List&lt;span style="color:#333">&amp;lt;&lt;/span>vector2D&lt;span style="color:#333">&amp;gt;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">nanoflannKDTree&lt;/span>&lt;span style="color:#333">&amp;lt;&lt;/span>vector2D, Field&lt;span style="color:#333">&amp;lt;&lt;/span>vector2D&lt;span style="color:#333">&amp;gt;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">nanoflannKDTree&lt;/span>&lt;span style="color:#333">&amp;lt;&lt;/span>vector, List&lt;span style="color:#333">&amp;lt;&lt;/span>vector&lt;span style="color:#333">&amp;gt;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">nanoflannKDTree&lt;/span>&lt;span style="color:#333">&amp;lt;&lt;/span>vector, Field&lt;span style="color:#333">&amp;lt;&lt;/span>vector&lt;span style="color:#333">&amp;gt;&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Force instantiations of nanoflannKDTree for 2D and 3D domains but explitcit instantiation&lt;/p></description></item><item><title>Api: meshfree/kdTrees/nElementsHasher.H</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__kdTrees__nElementsHasher/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__kdTrees__nElementsHasher/</guid><description>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#define nElementsHasher_H
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== autor:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ields_H&lt;/p>
+&lt;p>namespace Foam&lt;br />
+{&lt;br />
+}&lt;/p>
+&lt;pre tabindex="0">&lt;code>&lt;/code>&lt;/pre></description></item><item><title>Api: lib2/sampleClass/sampleClass.H</title><link>https://foamscience.github.io/odw/api/doc_lib2__sampleClass__sampleClass/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/api/doc_lib2__sampleClass__sampleClass/</guid><description>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">namespace&lt;/span> mff
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">struct&lt;/span> &lt;span style="color:#b06;font-weight:bold">nElementsHash&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">sampleClass&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Hashing for first n elements of list data&lt;/p>
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__mff__nelementshash" href="#standardese-foam__mff__nelementshash">&lt;/a>&lt;/p>
-&lt;h3 id="foammffnelementshash">Foam::mff::nElementsHash&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">struct&lt;/span> &lt;span style="color:#b06;font-weight:bold">nElementsHash&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass" href="#standardese-foam__sampleclass">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclass">Foam::sampleClass&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">sampleClass&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">public&lt;/span>&lt;span style="color:#333">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#080;font-weight:bold">enum&lt;/span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">picker&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sampleClass(&lt;span style="color:#339;font-weight:bold">int&lt;/span> x);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sampleClass(Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">default&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sampleClass(Foam&lt;span style="color:#333">::&lt;/span>sampleClass &lt;span style="color:#080;font-weight:bold">const&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">delete&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&lt;/span> &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">=&lt;/span>(Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">default&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&lt;/span> &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">=&lt;/span>(Foam&lt;span style="color:#333">::&lt;/span>sampleClass &lt;span style="color:#080;font-weight:bold">const&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">delete&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#333">~&lt;/span>sampleClass();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#339;font-weight:bold">int&lt;/span> &lt;span style="color:#06b;font-weight:bold">x&lt;/span>() &lt;span style="color:#080;font-weight:bold">const&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#339;font-weight:bold">double&lt;/span> &lt;span style="color:#06b;font-weight:bold">operator&lt;/span>()();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&lt;/span> &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">++&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Foam&lt;span style="color:#333">::&lt;/span>sampleClass &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">-&lt;/span>(&lt;span style="color:#339;font-weight:bold">int&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This template is mainly used in kdTrees wrapping Hashing algorithms from OpenFOAM for a subset of contiguous and non-contiguous data containers&lt;/p>
-&lt;hr /></description></item><item><title>Api: meshfree/shapes/basicShape/basicShapes.C</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__shapes__basicShape__basicShapes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__shapes__basicShape__basicShapes/</guid><description>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== author:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">using&lt;/span> &lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">using&lt;/span> &lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam&lt;span style="color:#333">::&lt;/span>mff;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span> typeName;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">static&lt;/span> mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>vector2D&lt;span style="color:#333">&amp;gt;::&lt;/span>dictionaryConstructorCompatTableType&lt;span style="color:#333">&amp;amp;&lt;/span> Foam&lt;span style="color:#333">::&lt;/span>mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>Vector2D&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">double&lt;/span>&lt;span style="color:#333">&amp;gt;&amp;gt;::&lt;/span>dictionaryConstructorCompatTable();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">static&lt;/span> &lt;span style="color:#339;font-weight:bold">void&lt;/span> Foam&lt;span style="color:#333">::&lt;/span>mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>Vector2D&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">double&lt;/span>&lt;span style="color:#333">&amp;gt;&amp;gt;::&lt;/span>dictionaryConstructorTablePtr_construct(&lt;span style="color:#339;font-weight:bold">bool&lt;/span> load);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">static&lt;/span> mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>vector2D&lt;span style="color:#333">&amp;gt;::&lt;/span>dictionaryConstructorPtr Foam&lt;span style="color:#333">::&lt;/span>mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>Vector2D&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">double&lt;/span>&lt;span style="color:#333">&amp;gt;&amp;gt;::&lt;/span>dictionaryConstructorTable(&lt;span style="color:#333">::&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span> k);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>;;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span> typeName;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">static&lt;/span> mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>vector&lt;span style="color:#333">&amp;gt;::&lt;/span>dictionaryConstructorCompatTableType&lt;span style="color:#333">&amp;amp;&lt;/span> Foam&lt;span style="color:#333">::&lt;/span>mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>Vector&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">double&lt;/span>&lt;span style="color:#333">&amp;gt;&amp;gt;::&lt;/span>dictionaryConstructorCompatTable();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">static&lt;/span> &lt;span style="color:#339;font-weight:bold">void&lt;/span> Foam&lt;span style="color:#333">::&lt;/span>mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>Vector&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">double&lt;/span>&lt;span style="color:#333">&amp;gt;&amp;gt;::&lt;/span>dictionaryConstructorTablePtr_construct(&lt;span style="color:#339;font-weight:bold">bool&lt;/span> load);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">static&lt;/span> mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>vector&lt;span style="color:#333">&amp;gt;::&lt;/span>dictionaryConstructorPtr Foam&lt;span style="color:#333">::&lt;/span>mff&lt;span style="color:#333">::&lt;/span>basicShape&lt;span style="color:#333">&amp;lt;&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>Vector&lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#339;font-weight:bold">double&lt;/span>&lt;span style="color:#333">&amp;gt;&amp;gt;::&lt;/span>dictionaryConstructorTable(&lt;span style="color:#333">::&lt;/span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span> k);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>;;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Force instantiations of basicShape for 2D and 3D shapes&lt;/p>
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-typename" href="#standardese-typename">&lt;/a>&lt;/p>
-&lt;h2 id="typename">typeName&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span> typeName;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>2D basic shape&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Base interface to shape objects. A shape is basically a set of “surface” patches which define regions of closed volumes. Discretization can happen on both sides of these patches if required. @note This is an inline note @warning And an inline warning @hyde-owner elwardi&lt;/p>
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__picker" href="#standardese-foam__sampleclass__picker">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclasspicker">Foam::sampleClass::picker&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">enum&lt;/span> &lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">picker&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> stable,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dev
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Enumerating class state !&lt;/p>
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-" href="#standardese-">&lt;/a>&lt;/p>
+&lt;h4 id="heading">&lt;/h4>
+&lt;ul>
+&lt;li>&lt;code>stable&lt;/code> - When it hasn’t benn changed for a while&lt;/li>
+&lt;li>&lt;code>dev&lt;/code> - Actively under development&lt;/li>
+&lt;/ul>
 &lt;hr />
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-typename" href="#standardese-typename">&lt;/a>&lt;/p>
-&lt;h2 id="typename-1">typeName&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span> typeName;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>3D basic shape&lt;/p>
-&lt;hr /></description></item><item><title>Api: meshfree/shapes/triSurfaceShape/triSurfaceShapes.C</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__shapes__triSurfaceShape__triSurfaceShapes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/api/doc_meshfree__shapes__triSurfaceShape__triSurfaceShapes/</guid><description>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">//=== author:Elwardi ===//
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888">&lt;/span>&lt;span style="color:#080;font-weight:bold">using&lt;/span> &lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">using&lt;/span> &lt;span style="color:#080;font-weight:bold">namespace&lt;/span> Foam&lt;span style="color:#333">::&lt;/span>mff;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span> typeName;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Force instantiations of 3D triSurfaceShapes&lt;/p>
-&lt;p>&lt;a style="visibility: hidden;" id="standardese-typename" href="#standardese-typename">&lt;/a>&lt;/p>
-&lt;h2 id="typename">typeName&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>word &lt;span style="color:#080;font-weight:bold">const&lt;/span> typeName;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Register a 3D triangular surface shape as a basic shape&lt;/p>
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__sampleclass" href="#standardese-foam__sampleclass__sampleclass">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclasssampleclass">Foam::sampleClass::sampleClass&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>sampleClass(&lt;span style="color:#339;font-weight:bold">int&lt;/span> x);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Construct from &lt;code>x&lt;/code>&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__sampleclass" href="#standardese-foam__sampleclass__sampleclass">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclasssampleclass-1">Foam::sampleClass::sampleClass&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>sampleClass(Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">default&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Default move construction&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__sampleclass" href="#standardese-foam__sampleclass__sampleclass">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclasssampleclass-2">Foam::sampleClass::sampleClass&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>sampleClass(Foam&lt;span style="color:#333">::&lt;/span>sampleClass &lt;span style="color:#080;font-weight:bold">const&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">delete&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Deleted default copy constructor&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__operator=" href="#standardese-foam__sampleclass__operator=">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclassoperator">Foam::sampleClass::operator=&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&lt;/span> &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">=&lt;/span>(Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">default&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Default move assignment&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__operator=" href="#standardese-foam__sampleclass__operator=">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclassoperator-1">Foam::sampleClass::operator=&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&lt;/span> &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">=&lt;/span>(Foam&lt;span style="color:#333">::&lt;/span>sampleClass &lt;span style="color:#080;font-weight:bold">const&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span>) &lt;span style="color:#333">=&lt;/span> &lt;span style="color:#080;font-weight:bold">delete&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Deleted default copyassignment&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__~sampleclass" href="#standardese-foam__sampleclass__~sampleclass">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclasssampleclass-3">Foam::sampleClass::~sampleClass&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#333">~&lt;/span>sampleClass();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Destructor&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__x" href="#standardese-foam__sampleclass__x">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclassx">Foam::sampleClass::x&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#339;font-weight:bold">int&lt;/span> &lt;span style="color:#06b;font-weight:bold">x&lt;/span>() &lt;span style="color:#080;font-weight:bold">const&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Const-access to &lt;code>x&lt;/code> @return &lt;code>x&lt;/code>&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__operator()" href="#standardese-foam__sampleclass__operator()">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclassoperator-2">Foam::sampleClass::operator()&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#339;font-weight:bold">double&lt;/span> &lt;span style="color:#06b;font-weight:bold">operator&lt;/span>()();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Run computation @return $k = \mathbb{R}^{-2.5x}$&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__operator++" href="#standardese-foam__sampleclass__operator++">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclassoperator-3">Foam::sampleClass::operator++&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>sampleClass&lt;span style="color:#333">&amp;amp;&lt;/span> &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">++&lt;/span>();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>@return A sampleClass with incremented &lt;code>x&lt;/code>&lt;/p>
+&lt;hr />
+&lt;p>&lt;a style="visibility: hidden;" id="standardese-foam__sampleclass__operator-" href="#standardese-foam__sampleclass__operator-">&lt;/a>&lt;/p>
+&lt;h3 id="foamsampleclassoperator-">Foam::sampleClass::operator-&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>Foam&lt;span style="color:#333">::&lt;/span>sampleClass &lt;span style="color:#080;font-weight:bold">operator&lt;/span>&lt;span style="color:#333">-&lt;/span>(&lt;span style="color:#339;font-weight:bold">int&lt;/span>&lt;span style="color:#333">&amp;amp;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Substraction between sampleClass and ints&lt;/p>
+&lt;hr />
 &lt;hr /></description></item></channel></rss>

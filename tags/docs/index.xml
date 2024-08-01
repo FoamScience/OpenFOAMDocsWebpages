@@ -1,42 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MeshFreeFoam API Docs – docs</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/tags/docs/</link><description>Recent content in docs on MeshFreeFoam API Docs</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 19 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://foamscience.github.io/MeshFreeFoam-Docs/tags/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Getting Started</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/docs/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/docs/getting-started/</guid><description>
-&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://github.com/FoamScience/hyde">This fork of Hyde&lt;/a>&lt;/li>
-&lt;li>An &lt;a href="https://github.com/gohugoio/hugo/releases">Extended Hugo&lt;/a> version&lt;/li>
-&lt;li>&lt;a href="https://jqlang.github.io/jq/download/">&lt;code>jq&lt;/code>&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/executablebooks/mdformat">&lt;code>mdformat&lt;/code>&lt;/a> with &lt;code>mdformat-frontmatter&lt;/code>&lt;/li>
-&lt;li>&lt;a href="https://pypi.org/project/python-frontmatter/">&lt;code>python-frontmatter&lt;/code>&lt;/a>&lt;/li>
-&lt;li>Your OpenFOAM libraries; with &lt;code>compile_commands.json&lt;/code> files generated in each library directory.&lt;br />
-An &lt;a href="https://github.com/FoamScience/ApiDocsTemplate/tree/main/code">example source directory is here&lt;/a>&lt;/li>
-&lt;li>Clone &lt;a href="https://github.com/FoamScience/ApiDocsTemplate">this repository&lt;/a> and &lt;code>cd&lt;/code> into it.&lt;/li>
-&lt;/ul>
-&lt;h2 id="generate-api-documentation">Generate API documentation&lt;/h2>
-&lt;p>Do:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># These paths need to be absolute&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./scripts/generate-docs.sh &lt;span style="color:#963">$PWD&lt;/span>/code &lt;span style="color:#963">$PWD&lt;/span>/content/en/api
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>That&amp;rsquo;s all; you&amp;rsquo;ll find your API docs as markdown files in &lt;code>content/en/api&lt;/code>.&lt;br />
-You can add content to them manually. The next time you run this command (hopefully on next&lt;br />
-commit), the manual content will not be overwritten but the front matter will be updated.&lt;/p>
-&lt;div class="alert alert-warning" role="alert">
-&lt;p>It might not be this easy for your own code. What this actually does is to try and partially compile your code&lt;br />
-with &lt;a href="https://clang.llvm.org/doxygen/group__CINDEX.html">clang&lt;/a> to figure out the AST of your code.&lt;/p>
-&lt;p>For it to work, your code needs to compile with clang.&lt;/p>
-&lt;/div>
-&lt;p>This repository provides example API documentation of the libraries in &lt;code>code&lt;/code> folder.&lt;br />
-You can access it through the main menu at the top right corner.&lt;/p>
-&lt;h2 id="make-sure-the-user-guide-is-still-up-to-date">Make sure the user guide is still up to date&lt;/h2>
-&lt;p>The Markdown files in &lt;code>content/en/docs&lt;/code> count as a user guide. On every commit, remember to check&lt;br />
-if information there needs to be changed!&lt;/p>
-&lt;p>To make sure you understand the structure of the docs, we&amp;rsquo;ve setup two top level pages:&lt;/p>
-&lt;ul>
-&lt;li>Overview&lt;/li>
-&lt;li>Getting Started&lt;/li>
-&lt;/ul>
-&lt;p>But the latter has a sub-page (Example Page) which you can reach from the left sidebar&lt;br />
-or the navigation buttons at the bottom of the page.&lt;/p>
-&lt;h2 id="write-a-blog-entry">Write a blog entry&lt;/h2>
-&lt;p>Did working on this commit make you learn something new? Write a blog entry about it at&lt;br />
-&lt;code>content/en/blog&lt;/code>!&lt;/p></description></item><item><title>Docs: Example Page</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/docs/getting-started/example-page/</link><pubDate>Sat, 19 Aug 2023 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/docs/getting-started/example-page/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Automated API and Unit testing Docs for OpenFOAM libs – docs</title><link>https://foamscience.github.io/odw/tags/docs/</link><description>Recent content in docs on Automated API and Unit testing Docs for OpenFOAM libs</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 01 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://foamscience.github.io/odw/tags/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Example Page</title><link>https://foamscience.github.io/odw/docs/getting-started/example-page/</link><pubDate>Sat, 19 Aug 2023 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/docs/getting-started/example-page/</guid><description>
 &lt;div class="pageinfo pageinfo-primary">
 &lt;p>This is a placeholder page. Replace it with your own content.&lt;/p>
 &lt;/div>
@@ -307,4 +269,92 @@ This is a warning with a title.
 &lt;h3 id="external-links">External Links&lt;/h3>
 &lt;p>Stumptown PBR&amp;amp;B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.&lt;/p>
 &lt;pre tabindex="0">&lt;code>This is the final element on the page and there should be no margin below this.
-&lt;/code>&lt;/pre></description></item></channel></rss>
+&lt;/code>&lt;/pre></description></item><item><title>Docs: Installation</title><link>https://foamscience.github.io/odw/docs/getting-started/installation/</link><pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/docs/getting-started/installation/</guid><description>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/standardese/standardese">Standardese&lt;/a>, which we commend you compile from source.&lt;/li>
+&lt;li>An &lt;a href="https://github.com/gohugoio/hugo/releases">Extended Hugo&lt;/a> version (newer than v 0.110.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/rizsotto/Bear">Bear&lt;/a> for generating compilation database while compiling the code.&lt;/li>
+&lt;li>Whatever the &lt;a href="https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/scripts/requirements.txt">requirements&lt;/a> file specifies&lt;/li>
+&lt;li>&lt;a href="https://github.com/FoamScience/foamUT">foamUT&lt;/a> if you want to include docs for unit tests.&lt;/li>
+&lt;/ul>
+&lt;p>You may take a look at the &lt;a href="">Apptainer definition file&lt;/a> for a quick inspiration on how to install everything that is needed.&lt;/p>
+&lt;h2 id="get-a-copy-of-the-odw-repository">Get a copy of the ODW repository&lt;/h2>
+&lt;p>You can either use the original &lt;a href="https://github.com/FoamScience/OpenFOAMDocsWebpages">ODW&lt;/a> as a Template repository, or just fork it the usual way.&lt;/p>
+&lt;h2 id="apptainer-containers">Apptainer containers&lt;/h2>
+&lt;p>If you want to try this out but don&amp;rsquo;t want to bloat your local environment with software that you might not use, we provide an option to build an apptainer container for generating and rendering the documentation website:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/FoamScience/openfoam-apptainer-packaging /tmp/of_tainers
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/FoamScience/OpenFOAMDocsWebpages /tmp/odw
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> /tmp/odw
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ansible-playbook /tmp/of_tainers/build.yaml --extra-vars&lt;span style="color:#333">=&lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;original_dir=&lt;/span>&lt;span style="color:#963">$PWD&lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;&lt;/span> --extra-vars&lt;span style="color:#333">=&lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;@build/config.yaml&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># To generate the API docs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>apptainer run containers/projects/odw*.sif &lt;span style="background-color:#fff0f0">&amp;#34;DOCS_DIR=&lt;/span>&lt;span style="color:#963">$PWD&lt;/span>&lt;span style="background-color:#fff0f0"> ./scripts/docs api &amp;amp;&amp;amp; hugo server&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Run the following to know more:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>apptainer run containers/projects/odw*.sif &lt;span style="background-color:#fff0f0">&amp;#34;jq &amp;#39;.&amp;#39; /apps.json&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Getting Started</title><link>https://foamscience.github.io/odw/docs/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/docs/getting-started/</guid><description>
+&lt;p>Check the &lt;a href="https://foamscience.github.io/odw/docs/Overview">Overview&lt;/a> page before anything else. Then you may proceed to installing the dependencies and getting your site up and running.&lt;/p></description></item><item><title>Docs: API docs generation</title><link>https://foamscience.github.io/odw/docs/getting-started/api-docs/</link><pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/docs/getting-started/api-docs/</guid><description>
+&lt;div class="pageinfo pageinfo-primary">
+&lt;p>API documentation (somewhat) relies on in-comments documentation written by the developer, but &lt;code>standardese&lt;/code> seems to check it against the actual function signature to make sure the comments don&amp;rsquo;t get outdated. We think that this is still a nice compromise.&lt;/p>
+&lt;/div>
+&lt;p>Here is a typical workflow to generate API documentation for a repository that manages both the code and documentation website:&lt;/p>
+&lt;div class="alert alert-warning" role="alert">
+Note that it&amp;rsquo;s &lt;strong>not recommended&lt;/strong> to merge the actual code with the docs website. This is illustrated here just to show you how to generate API docs for the sample code provided with this repository.
+&lt;/div>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Clone the repo which has the code (src/ folder, where your OpenFOAM libs should reside)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/FoamScience/OpenFOAMDocsWebpages /tmp/odw
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Move to its root folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> /tmp/odw
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Source some OpenFOAM version (required)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>openfoam2406
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Compile your code, this command will have to generate a compile_commands_.json&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># for each library&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./Allwmake
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Set DOCS_DIR to the repository where the website is to be managed&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># In this case, both are the same repository:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#963">DOCS_DIR&lt;/span>&lt;span style="color:#333">=&lt;/span>&lt;span style="color:#963">$PWD&lt;/span> ./scripts/docs api
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Take a look at the API docs (at localhost:1313 by default)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>http://localhost:1313/api&lt;/code> page should then have three sections reflecting the sample code provided &lt;a href="https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/src">here&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>Entities, listing all of your name-spaced code entities. This page is particularly useful with the search functionality turned on in your &lt;code>hugo.toml&lt;/code>&lt;/li>
+&lt;li>Header files, documentation each &amp;ldquo;important file&amp;rdquo;. This feature is still work-in-progress in terms of what files to pick.&lt;/li>
+&lt;li>&lt;code>Standardese&lt;/code> Modules.&lt;/li>
+&lt;/ul>
+&lt;div class="alert alert-warning" role="alert">
+It might not be this easy for your own code. What this actually does is to try and partially compile your code with &lt;a href="https://clang.llvm.org/doxygen/group__CINDEX.html">clang&lt;/a> to figure out your AST. For it to work, your code needs to compile with clang.
+&lt;/div>
+&lt;p>The provided sample code is compiled with the following &lt;code>Allwmake&lt;/code> script. Note that it is important to generate &lt;code>compile_commands.json&lt;/code> for each library so that &lt;code>standardese&lt;/code> can get hold of all the included header files:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">#!/bin/sh
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#579">&lt;/span>&lt;span style="color:#007020">cd&lt;/span> &lt;span style="background-color:#fff0f0">&amp;#34;&lt;/span>&lt;span style="background-color:#eee">${&lt;/span>&lt;span style="color:#963">0&lt;/span>%/*&lt;span style="background-color:#eee">}&lt;/span>&lt;span style="background-color:#fff0f0">&amp;#34;&lt;/span> &lt;span style="color:#333">||&lt;/span> &lt;span style="color:#007020">exit&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wclean src/lib1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> src/lib1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bear -- wmake libso
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> -
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wclean src/lib2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> src/lib1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bear -- wmake libso
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> -
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>On the API pages, and on most of the other pages, we keep information about who wrote the code and documentation through &lt;code>@owner&lt;/code> tag in inline comments. Add yourself to &lt;a href="https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/content/en/contributors">contributers&lt;/a> by adding a folder with your name there that has a &lt;code>_index.md&lt;/code> holding your metadata and a short bio if you like. Blog post authors must be specified explicitly in the front matter, and we don&amp;rsquo;t track authors for the Getting-Started/User-Guide section - but that information is still available through git if you ever need it.&lt;/p></description></item><item><title>Docs: Unit-tests docs generation</title><link>https://foamscience.github.io/odw/docs/getting-started/ut-docs/</link><pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/odw/docs/getting-started/ut-docs/</guid><description>
+&lt;p>All the heavy-lifting is actually done bu &lt;code>foamUT&lt;/code> itself, so if you have some unit tests under &lt;code>tests/&lt;/code> folder, they will run and the output is converted over to the webpages under &lt;code>/tests&lt;/code> URL. It&amp;rsquo;s important to note that &lt;strong>your tests must compile&lt;/strong> as we cannot generate reports on tests that do not compile.&lt;/p>
+&lt;p>Here is a typical workflow to generate documentation for a repository with some Unit tests:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Clone the repo which has the code (src/ and test/ folder, where your OpenFOAM libs should reside)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/FoamScience/OpenFOAMDocsWebpages /tmp/odw
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Get a temporary clone of foamUT&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/FoamScience/foamUT /tmp/ut
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Move to its root folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> /tmp/odw
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Source some OpenFOAM version (required)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>openfoam2406
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Compile your libraries -- don&amp;#39;t forget this important step&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./Allwmake
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Set DOCS_DIR to the repository where the website is to be managed&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># In this case, both are the same repository,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># also, point to where foamUT repo is located:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#963">DOCS_DIR&lt;/span>&lt;span style="color:#333">=&lt;/span>&lt;span style="color:#963">$PWD&lt;/span> &lt;span style="color:#963">FOAM_FOAMUT&lt;/span>&lt;span style="color:#333">=&lt;/span>/tmp/ut ./scripts/docs ut
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Take a look at the unit-tests docs page (at localhost:1313 by default)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>http://localhost:1313/tests&lt;/code> page should then have reports on all unit-testing cases. For now, only serial runs are reported but supporting parallel tests is planned.&lt;/p>
+&lt;div class="alert alert-success" role="alert">
+If your unit-testing workflow requires the addition of custom OpenFOAM cases to perform tests on (i.e. &lt;code>testCases/&lt;/code> exists), the docs script will automatically pick those up instead of the default cavity provided by &lt;code>foamUT&lt;/code>.
+&lt;/div></description></item></channel></rss>
