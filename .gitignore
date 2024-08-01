@@ -8,3 +8,5 @@ linux*
 containers/
 .cache/
 lnInclude/
+log.*
+testDriver
