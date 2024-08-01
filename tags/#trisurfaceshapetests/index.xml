@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MeshFreeFoam API Docs – #triSurfaceShapeTests</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/tags/#trisurfaceshapetests/</link><description>Recent content in #triSurfaceShapeTests on MeshFreeFoam API Docs</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://foamscience.github.io/MeshFreeFoam-Docs/tags/#trisurfaceshapetests/index.xml" rel="self" type="application/rss+xml"/><item><title>Tests: Unit tests for meshfree - triSurfaceShape</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/tests/meshfree/trisurfaceshapetests/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/tests/meshfree/trisurfaceshapetests/</guid><description>
+&lt;div class="alert alert-primary" role="alert">
+&lt;h4 class="alert-heading">Note:&lt;/h4>
+&lt;p>The unit tests pages are automatically generated from the test reports. Some important points to mention:&lt;/p>
+&lt;ul>
+&lt;li>The random number generator is seeded with the same seed for parallel/serial runs for the same test case.&lt;/li>
+&lt;li>Number of passing tests is the &amp;ldquo;effective&amp;rdquo; one (including the ones that fail but are expected to fail)&amp;quot;.&lt;/li>
+&lt;li>Number of failing tests is the &amp;ldquo;effective&amp;rdquo; one (only the ones that fail and are not expected to fail)&amp;quot;.&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;h2 id="serial-unit-tests-for-trisurfaceshape-in-meshfree-library-on-advectiondiffusion-case">Serial unit tests for &lt;code>triSurfaceShape&lt;/code> in &lt;code>meshfree&lt;/code> library on &lt;code>[advectionDiffusion]&lt;/code> case&lt;/h2>
+&lt;p>Tests were performed using &lt;a href="https://github.com/catchorg/Catch2">Catch2&lt;/a> version &lt;code>3.6.0&lt;/code> (rng-seed: &lt;code>2786312302&lt;/code>) with the following filters: &lt;code>[serial] [advectionDiffusion] [#triSurfaceShapeTests]&lt;/code>.&lt;/p>
+&lt;p>&lt;i class="fa-sharp fa-solid fa-check -text-primary">&lt;/i> &lt;span class="-text-primary">1 Passing&lt;/span> test cases (&lt;span class="-text-primary">2&lt;/span> expressions), &lt;i class="fa-sharp fa-solid fa-circle-exclamation -text-warning">&lt;/i> &lt;span class="-text-warning">0 Failing&lt;/span> test cases (&lt;span class="-text-warning">0&lt;/span> expressions).&lt;/p>
+&lt;h3 id="trisurfaceshape-constuction-in-3d-performs-correct-boundary-registration---vector">triSurfaceShape: Constuction in 3D performs correct boundary registration - vector&lt;/h3>
+&lt;p>Defined in &lt;a href="https://github.com/FoamScience/MeshFreeFoam/blob/master/tests/meshfree/triSurfaceShapeTests.C#L13">triSurfaceShapeTests.C#13&lt;/a>&lt;/p>
+&lt;p>With expressions:&lt;/p>
+&lt;hr />
+&lt;p>&lt;i class='fa-sharp fa-solid fa-check -text-primary'>&lt;/i> From file &lt;a href="https://github.com/FoamScience/MeshFreeFoam/blob/master/tests/meshfree/triSurfaceShapeTests.C#L24">triSurfaceShapeTests.C#24&lt;/a>.&lt;/p>
+&lt;p>Belonging to the test section scoped as:&lt;/p>
+&lt;pre tabindex="0">&lt;code>triSurfaceShape: Constuction in 3D performs correct boundary registration - vector
+&lt;/code>&lt;/pre>&lt;hr />
+&lt;p>&lt;i class='fa-sharp fa-solid fa-check -text-primary'>&lt;/i> From file &lt;a href="https://github.com/FoamScience/MeshFreeFoam/blob/master/tests/meshfree/triSurfaceShapeTests.C#L25">triSurfaceShapeTests.C#25&lt;/a>.&lt;/p>
+&lt;p>Belonging to the test section scoped as:&lt;/p>
+&lt;pre tabindex="0">&lt;code>triSurfaceShape: Constuction in 3D performs correct boundary registration - vector
+&lt;/code>&lt;/pre></description></item></channel></rss>

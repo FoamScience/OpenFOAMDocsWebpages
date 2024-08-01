@@ -1,0 +1,26 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MeshFreeFoam API Docs – hyde</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/tags/hyde/</link><description>Recent content in hyde on MeshFreeFoam API Docs</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://foamscience.github.io/MeshFreeFoam-Docs/tags/hyde/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: The very first issues I ran into with this documentation project</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/blog/2023/08/18/the-very-first-issues-i-ran-into-with-this-documentation-project/</link><pubDate>Fri, 18 Aug 2023 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/blog/2023/08/18/the-very-first-issues-i-ran-into-with-this-documentation-project/</guid><description>
+&lt;p>There are basically three main issues:&lt;/p>
+&lt;h2 id="documenting-c20-specifically-concepts">Documenting C++20 (specifically: concepts)&lt;/h2>
+&lt;p>At the time of writing, Hyde doesn&amp;rsquo;t support C++ concepts yet, which I plan to use extensively. The code still compiles (because &lt;code>clang&lt;/code> can compile it) but Hyde ignores &lt;code>require&lt;/code> statements. Its reaction to &lt;code>concept&lt;/code> declarations isn&amp;rsquo;t tested.&lt;br />
+The current behavior is that &lt;code>require&lt;/code> does not show up in the declaration:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>std&lt;span style="color:#333">::&lt;/span>regular T&lt;span style="color:#333">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">myClass&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>simply appears in the API docs as:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">template&lt;/span> &lt;span style="color:#333">&amp;lt;&lt;/span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">T&lt;/span>&lt;span style="color:#333">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#080;font-weight:bold">class&lt;/span> &lt;span style="color:#b06;font-weight:bold">myClass&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>which is a lot more generic and may not give a precise idea on what&amp;rsquo;s going on. It&amp;rsquo;s flat out wrong.&lt;/p>
+&lt;div class="alert alert-success" role="alert">
+At the time of writing, I can live with this though.
+&lt;/div>
+&lt;h2 id="the-openfoam-fork-needs-to-compile-with-clang">The OpenFOAM fork needs to compile with clang&lt;/h2>
+&lt;p>Basically, any dependency code you rely on, as well as your own libraries, need to compile with clang. Foam-Extend, for example, doesn&amp;rsquo;t, since &lt;code>clang&lt;/code> thinks some calls to operators between &lt;code>tmp&lt;/code> objects are unambiguous.&lt;/p>
+&lt;p>Also, even with the forks which mostly compile with &lt;code>clang&lt;/code>, they frequently use &lt;code>[[deprecated]]&lt;/code> to make the compiler mark functions and methods as deprecated. But, they do not maintain the inline docs to match the deprecated docs.&lt;/p>
+&lt;p>&lt;code>Hyde&lt;/code> actually sets compiler deprecation warnings as errors by default. We have to skip this step, and as a result we lose the automatic synchronization between code and API docs.&lt;/p>
+&lt;h2 id="linking-to-actual-source-files">Linking to actual source files&lt;/h2>
+&lt;p>Personally I don&amp;rsquo;t like to link API docs to actual source files, but it can be useful to those who don&amp;rsquo;t spend as much time in a CLI environment. I still think It&amp;rsquo;s the job of your IDE to show where stuff are, and to show you the documentation too though.&lt;/p>
+&lt;p>Hyde can generate source file relationships if we add &lt;code>-hyde-src-root&lt;/code> to the call but this clutters the left sidebar with unwanted content; I process resulting markdown files with a Python script afterwards to minimize the clutter.&lt;/p>
+&lt;blockquote>
+&lt;p>Because Hyde processes the expanded AST of C++ files, it doesn&amp;rsquo;t report line numbers for declarations and definitions for now.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="recap">Recap&lt;/h2>
+&lt;p>The whole system can crumble very easily. And it might not even be your fault, so you couldn&amp;rsquo;t fix it! But while it works, it works marvelously well! Plus, it&amp;rsquo;s an opportunity for me to learn new things (Compiler AST, for example?).&lt;/p></description></item></channel></rss>

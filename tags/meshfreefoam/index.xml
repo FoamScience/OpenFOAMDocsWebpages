@@ -1,0 +1,54 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MeshFreeFoam API Docs – meshfreeFoam</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/tags/meshfreefoam/</link><description>Recent content in meshfreeFoam on MeshFreeFoam API Docs</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 18 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://foamscience.github.io/MeshFreeFoam-Docs/tags/meshfreefoam/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Managing dependency software for `meshfreeFoam`</title><link>https://foamscience.github.io/MeshFreeFoam-Docs/blog/2023/08/18/managing-dependency-software-for-meshfreefoam/</link><pubDate>Fri, 18 Aug 2023 00:00:00 +0000</pubDate><guid>https://foamscience.github.io/MeshFreeFoam-Docs/blog/2023/08/18/managing-dependency-software-for-meshfreefoam/</guid><description>
+&lt;p>Dependency management is always a hustle. For my PhD project, I would need to live through this hell for around three years. Specifically, OpenFOAM libraries are dependencies for me and that is a big deal for few reasons:&lt;/p>
+&lt;ol>
+&lt;li>Which OpenFOAM fork to use? OpenFOAM forks from OpenCFD and Foundation are changing too quickly and Foam-Extend practically gets too little updates.&lt;/li>
+&lt;li>My customizations will not fit as changes upstream OpenFOAM maintainers would be interested in merging; simply because they are mostly &amp;ldquo;experimentation&amp;rdquo; and maybe meshless-specific.&lt;/li>
+&lt;li>I only need a very small set of OpenFOAM libraries to start and I don&amp;rsquo;t see a way to efficiently leverage the full set of libraries because most of them are optimized for FVM.&lt;/li>
+&lt;/ol>
+&lt;p>This practically applies to any library that is hard to merge my changes into and gets frequent updates.&lt;/p>
+&lt;h2 id="dependency-management-workflow">Dependency management workflow&lt;/h2>
+&lt;p>The workflow to manage my dependencies revolves around the following concepts and ideas:&lt;/p>
+&lt;ul>
+&lt;li>I need a way to significantly customize OpenFOAM libs while keeping the ability to pull updates from upstream repo.&lt;/li>
+&lt;li>Keep the full git history for each file I use from the upstream repo.&lt;/li>
+&lt;li>Switching dependency libs should be easy. A few conflicts are fine, but no significant code refactoring should be necessary.&lt;/li>
+&lt;/ul>
+&lt;h3 id="how-to-make-openfoam-libs-available-as-dependencies">How to make OpenFOAM libs available as dependencies&lt;/h3>
+&lt;p>There are scripts to automatize this process, but I will explain the most important steps here:&lt;/p>
+&lt;p>We start by cloning the OpenFOAM project, filtering the paths we need (You&amp;rsquo;ll need &lt;a href="https://github.com/newren/git-filter-repo/">git-filter-repo&lt;/a> for this).&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://develop.openfoam.com/Development/openfoam /tmp/openfoam-scratch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> /tmp/openfoam-scratch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git filter-repo --path COPYING --path Allwmake --path bin --path etc --path src/Allwmake &lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">&lt;/span> --path src/OSspecific --path src/OpenFOAM --path src/Pstream/ &lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">&lt;/span> --path META-INFO/ --path wmake --force
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next, in the target project repo, add the mutilated OpenFOAM repository as a subtree, and make a branch for &lt;code>original&lt;/code> OpenFOAM commits there:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> /path/to/repo/root
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git subtree add --prefix dependencies/meshfree-openfoam /tmp/openfoam-scratch/ master
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git checkout -b original-openfoam
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Switch back to master (or whatever your main branch is called), do some changes, and commit:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git checkout master
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add -A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="background-color:#fff0f0">&amp;#34;Update OpenFOAM compilation&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The changes you make will obviously be related to your target project, so it&amp;rsquo;s a good idea to keep those commits in your main repository instead of managing a zillion dependency repositories.&lt;/p>
+&lt;p>Updates from the original repo come in two forms:&lt;/p>
+&lt;ul>
+&lt;li>New change commits. These may cause conflicts with our changes, so rebasing will allow us to solve them if done frequently enough.&lt;/li>
+&lt;li>New libraries we want to add. These are also new commits, but we know they won&amp;rsquo;t cause trouble since they only add files to &lt;code>original&lt;/code> branch. We only have to remember to update &lt;code>Allwmake&lt;/code> scripts to compile those new libraries.&lt;/li>
+&lt;/ul>
+&lt;p>Here is how to add &lt;code>src/fileFormats&lt;/code> and &lt;code>src/surfMesh&lt;/code> libraries from OpenFOAM:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Create a new filtered repo with the new libs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -rf /tmp/openfoam-scratch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://develop.openfoam.com/Development/openfoam /tmp/openfoam-scratch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> /tmp/openfoam-scratch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git filter-repo --path COPYING --path Allwmake --path bin --path etc --path src/Allwmake &lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">&lt;/span> --path src/OSspecific --path src/OpenFOAM --path src/Pstream/ &lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;background-color:#fff0f0;font-weight:bold">&lt;/span> --path META-INFO/ --path wmake --path src/fileFormats --path src/surfMesh --force
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># Merge those commits into master&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#007020">cd&lt;/span> /path/to/repo/root
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git checkout original-openfoam
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git subtree pull --prefix dependencies/meshfree-openfoam /tmp/openfoam-scratch/ master
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git checkout master
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># This merge has less chance of producing conflicts if you&amp;#39;re just adding libs.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git merge original-openfoam
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888"># On master, don&amp;#39;t forget to update Allwmake to compile the new libs if necessary&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This workflow maintains a healthy level of consistency and makes it easy to experiment with dependency library modifications (e.g. Optimization for GPU, &amp;hellip;, etc) and even changing compiler settings.&lt;/p></description></item></channel></rss>
