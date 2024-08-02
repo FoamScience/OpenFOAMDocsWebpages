@@ -36,7 +36,7 @@ DOCS_DIR=$PWD ./scripts/docs api
 hugo server
 ```
 
-`http://localhost:1313/api` page should then have three sections reflecting the sample code provided [here](https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/src):
+`http://localhost:1313/api` [page]({{% ref "/api/" %}}) should then have three sections reflecting the sample code provided [here](https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/src):
 - Entities, listing all of your name-spaced code entities. This page is particularly useful with the search functionality turned on in your `hugo.toml`
 - Header files, documentation each "important file". This feature is still work-in-progress in terms of what files to pick.
 - `Standardese` Modules.
@@ -60,5 +60,10 @@ bear -- wmake libso
 cd -
 ```
 
+### Code Author information
 
-On the API pages, and on most of the other pages, we keep information about who wrote the code and documentation through `@owner` tag in inline comments. Add yourself to [contributers](https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/content/en/contributors) by adding a folder with your name there that has a `_index.md` holding your metadata and a short bio if you like. Blog post authors must be specified explicitly in the front matter, and we don't track authors for the Getting-Started/User-Guide section - but that information is still available through git if you ever need it.
+On the API pages, and on most of the other pages, we keep information about who wrote the code and documentation by parsing the inline comments of the documented entities, which are expected as follows:
+```cpp
+/// @output_section author:elwardi
+```
+Then add yourself to [contributers](https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/content/en/contributors) by adding a folder with your name there that has a `_index.md` holding your metadata and a short bio if you like. An example markdown file for an author can be consulted here: [elwardi](https://github.com/FoamScience/OpenFOAMDocsWebpages/blob/main/content/en/contributors/elwardi/_index.md). Blog post authors must be specified explicitly in the front matter though, and we don't track authors for the Getting-Started/User-Guide section - but that information is still available through git if you ever need it.

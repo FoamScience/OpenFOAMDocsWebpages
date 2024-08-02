@@ -18,3 +18,7 @@ menu:
     weight: 20
 title: Project API
 ---
+
+---
+
+This section presents automatically generated documentation for the project's API

@@ -234,6 +234,12 @@ Plaid hell of cred microdosing, succulents tilde pour-over. Offal shabby chic 3 
 
 Stumptown PBR&B keytar plaid street art, forage XOXO pitchfork selvage affogato green juice listicle pickled everyday carry hashtag. Organic sustainable letterpress sartorial scenester intelligentsia swag bushwick. Put a bird on it stumptown neutra locavore. IPhone typewriter messenger bag narwhal. Ennui cold-pressed seitan flannel keytar, single-origin coffee adaptogen occupy yuccie williamsburg chillwave shoreditch forage waistcoat.
 
+### Equations
+
+You can have inline math by enclosing equations in `$` pairs or use inline math de `\\(....\\)`: for example, $\mu$. 
+
+Block math mode can be entered with either `$$` pairs or `\\[....\\]`:
+\\[\sum_{i=0}^{N}\frac{f_i(x_0)}{(x_i-1)^2}\\]
 
 
 ```

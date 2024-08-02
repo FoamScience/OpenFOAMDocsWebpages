@@ -1,5 +1,6 @@
 ---
 title:  <Missing>
+shortTitle:  __MISSING__
 ---
 
 This means the documentation software could not infer the contributor from the header and
@@ -8,8 +9,7 @@ have many of our own entities here!
 
 Comment your classes and functions with the following to assign two contributors:
 ```cpp
-/// @hyde-owner contributor1
-/// @hyde-owner contributor2
+/// @output-section author:elwardi
 class Test;
 ```
 

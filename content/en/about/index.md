@@ -17,7 +17,7 @@ It's for the lazy lots of us who write OpenFOAM code frequently and want to docu
 in a way that's actually decent to look at and browse. Reading source code files is still
 better though...
 
-Three sections are natively supported; though there is nothing holding you back of adding more:
+Three sections are natively supported; though there is nothing holding you back from adding more:
 
 {{% /blocks/lead %}}
 

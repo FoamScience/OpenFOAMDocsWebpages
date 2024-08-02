@@ -1,5 +1,6 @@
 ---
-contributors: []
+contributors:
+- elwardi
 layout: library
 title: lib2/sampleClass/sampleClass.H
 url: /api/doc_lib2__sampleClass__sampleClass
@@ -10,6 +11,7 @@ url: /api/doc_lib2__sampleClass__sampleClass
 ``` cpp
 namespace Foam
 {
+    //=== author:elwardi ===//
     class sampleClass;
 }
 ```
@@ -45,7 +47,7 @@ public:
 };
 ```
 
-Base interface to shape objects. A shape is basically a set of “surface” patches which define regions of closed volumes. Discretization can happen on both sides of these patches if required. @note This is an inline note @warning And an inline warning @hyde-owner elwardi
+Base interface to shape objects. A shape is basically a set of “surface” patches which define regions of closed volumes. Discretization can happen on both sides of these patches if required. @note This is an inline note @warning And an inline warning
 
 <a style="visibility: hidden;" id="standardese-foam__sampleclass__picker" href="#standardese-foam__sampleclass__picker"></a>
 ### Foam::sampleClass::picker

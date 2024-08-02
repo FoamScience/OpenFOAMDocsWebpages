@@ -1,5 +1,6 @@
 ---
-contributors: []
+contributors:
+- elwardi
 layout: library
 title: lib1/sample.C
 url: /api/doc_lib1__sample
@@ -8,6 +9,7 @@ url: /api/doc_lib1__sample
 
 
 ``` cpp
+//=== author:elwardi ===//
 namespace Foam
 {
     using coolType1 = int;
@@ -25,7 +27,7 @@ namespace Foam
 using coolType1 = int;
 ```
 
-Global typedef using using. Not a typo :face\_with\_tears\_of\_joy:
+Global typedef using using. Not a typo :wave: :joy:
 
 -----
 
@@ -36,7 +38,7 @@ Global typedef using using. Not a typo :face\_with\_tears\_of\_joy:
 using coolType2 = int;
 ```
 
-Global typedef using typedef. Also not a typo :face\_with\_hand\_over\_mouth:
+Global typedef using typedef. Also not a typo :wink:
 
 -----
 

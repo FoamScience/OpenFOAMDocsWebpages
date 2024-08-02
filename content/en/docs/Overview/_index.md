@@ -39,4 +39,5 @@ We have prepared a check-list for you to go through if you decide to adapt this 
 - [ ] Setup the first [blog post](https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/content/en/blog). Maybe start with announcing switching to ODW for documenting your code! Also, we recommend to exploit the discussions section to share technical updates with your community.
 - [ ] Visit [API docs generation]({{% ref "/docs/getting-started/api-docs" %}}) to generate your first API docs.
 - [ ] Visit [Unit-tests docs generation]({{% ref "/docs/getting-started/ut-docs" %}}) to generate your first documentation for Unit-tests.
-- [ ] An example Github workflow that publishes the website to Github Pages. Adapt the [workflow file](https://github.com/FoamScience/OpenFOAMDocsWebpages/blob/main/.github/workflows/gh-pages.yml) to reflect your needs (e.g. the URL to publish to).
+- [ ] An example Github workflow that deploys the website to Github Pages. Adapt the [workflow file](https://github.com/FoamScience/OpenFOAMDocsWebpages/blob/main/.github/workflows/gh-pages.yml) to reflect your needs (e.g. the URL to publish to).
+- [ ] Don't forgot to turn on Pages deployments from `gh-pages` branch in your repository settings.

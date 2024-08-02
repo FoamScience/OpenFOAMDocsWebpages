@@ -10,13 +10,13 @@ weight: 2
 
 ## Prerequisites
 
-- [Standardese](https://github.com/standardese/standardese), which we commend you compile from source.
-- An [Extended Hugo](https://github.com/gohugoio/hugo/releases) version (newer than v 0.110.0)
-- [Bear](https://github.com/rizsotto/Bear) for generating compilation database while compiling the code.
-- Whatever the [requirements](https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/scripts/requirements.txt) file specifies
-- [foamUT](https://github.com/FoamScience/foamUT) if you want to include docs for unit tests.
+1. [Standardese](https://github.com/standardese/standardese), which we commend you compile from source.
+1. An [Extended Hugo](https://github.com/gohugoio/hugo/releases) version (newer than v 0.130.0). Hugo requires [Golang](https://go.dev/doc/install).
+1. [Bear](https://github.com/rizsotto/Bear) for generating compilation database while compiling the code.
+1. Whatever the [requirements](https://github.com/FoamScience/OpenFOAMDocsWebpages/tree/main/scripts/requirements.txt) file specifies
+1. [foamUT](https://github.com/FoamScience/foamUT) if you want to include docs for unit tests.
 
-You may take a look at the [Apptainer definition file]() for a quick inspiration on how to install everything that is needed.
+You may take a look at the [Apptainer definition file](https://github.com/FoamScience/OpenFOAMDocsWebpages/blob/main/build/odw.def) for a quick inspiration on how to install everything that is needed.
 
 ## Get a copy of the ODW repository
 

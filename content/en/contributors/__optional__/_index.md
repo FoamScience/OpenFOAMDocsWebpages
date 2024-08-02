@@ -7,7 +7,7 @@ source files. This is **not** fine as we strive to document everything.
 
 Comment your classes and functions with the following to assign a contributor:
 ```cpp
-/// @hyde-owner contributor1
+/// @output-section author:elwardi
 class Test;
 ```
 
