@@ -223,6 +223,7 @@ docs_api_command() {
   compile_commands=$(find src/ -type f -name compile_commands.json | while read -r cc; do echo  "--input.blacklist_file ${cc#src/}"; done)
   openfoam_includes=$(find src -type f -name compile_commands.json -exec jq -r '[.[] | .arguments[] | select(startswith("-I"))] | unique[]'  {} \;)
   pip install -r "$DOCS_DIR"/scripts/requirements.txt
+  echo $includes $openfoam_includes
   set -e
   standardese src \
       -DNoRepository -DOPENFOAM=2306 -DWM_DP -DWM_LABEL_SIZE=32 -fPIC -ftemplate-depth-100 \
@@ -259,6 +260,10 @@ docs_unittests_command() {
       rm -rf "$FOAM_FOAMUT"/cases
       cp -r "$PWD/testCases" "$FOAM_FOAMUT/cases"
   fi
+  if [ -d "$FOAM_FOAMUT" ] ; then
+      rm -rf $FOAM_FOAMUT
+  fi
+  git clone https://github.com/FoamScience/foamUT $FOAM_FOAMUT
   set +e
   TESTS_DOCS="$DOCS_DIR/content/en/tests"
   mkdir -p "$TESTS_DOCS"

@@ -7,6 +7,7 @@ includes=$(find $PWD -type d -iname lnInclude | while read -r dir; do   echo "-I
 compile_commands=$(find src/ -type f -name compile_commands.json | while read -r cc; do echo  "--input.blacklist_file ${cc#src/}"; done)
 openfoam_includes=$(find src -type f -name compile_commands.json -exec jq -r '[.[] | .arguments[] | select(startswith("-I"))] | unique[]'  {} \;)
 pip install -r "$DOCS_DIR"/scripts/requirements.txt
+echo $includes $openfoam_includes
 set -e
 standardese src \
     -DNoRepository -DOPENFOAM=2306 -DWM_DP -DWM_LABEL_SIZE=32 -fPIC -ftemplate-depth-100 \

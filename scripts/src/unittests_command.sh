@@ -9,6 +9,10 @@ if [ -d "$PWD/testCases" ]; then
     rm -rf "$FOAM_FOAMUT"/cases
     cp -r "$PWD/testCases" "$FOAM_FOAMUT/cases"
 fi
+if [ -d "$FOAM_FOAMUT" ] ; then
+    rm -rf $FOAM_FOAMUT
+fi
+git clone https://github.com/FoamScience/foamUT $FOAM_FOAMUT
 set +e
 TESTS_DOCS="$DOCS_DIR/content/en/tests"
 mkdir -p "$TESTS_DOCS"
