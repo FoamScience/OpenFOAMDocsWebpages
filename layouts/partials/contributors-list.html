@@ -16,7 +16,7 @@
     By
     {{ range $idx,$val := $contribs }}
     {{ $len := (len $contribs) }}
-    {{ $c := index (where $allpgs ".Data.Term" "==" ($val | urlize) ) 0 }}
+    {{ $c := index (where $allpgs "Params.shortTitle" "==" $val ) 0 }}
     <a href="{{ $site.BaseURL }}/contributors/{{ $val | urlize }}">{{ $c.Params.title }}</a>
     {{ if or $c.Params.linkedin $c.Params.github }}
     (
