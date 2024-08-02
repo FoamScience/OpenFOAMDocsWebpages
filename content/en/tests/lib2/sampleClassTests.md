@@ -1,9 +1,9 @@
 ---
 layout: unittest
 tags:
+- '#sampleClassTests'
 - serial
 - cavity
-- '#sampleClassTests'
 title: Unit tests for lib2 - sampleClass
 ---
 
@@ -16,11 +16,11 @@ The unit tests pages are automatically generated from the test reports. Some imp
 
 ## Serial unit tests for `sampleClass` in `lib2` library on `[cavity]` case
 
-Tests were performed using [Catch2](https://github.com/catchorg/Catch2) version `3.6.0` (rng-seed: `159055638`) with the following filters: `[serial] [cavity] [#sampleClassTests]`.
+Tests were performed using [Catch2](https://github.com/catchorg/Catch2) version `3.6.0` (rng-seed: `3966308918`) with the following filters: `[serial] [cavity] [#sampleClassTests]`.
 
 <i class="fa-sharp fa-solid fa-check -text-primary"></i> <span class="-text-primary">1 Passing</span> test cases  (<span class="-text-primary">2</span> expressions), <i class="fa-sharp fa-solid fa-circle-exclamation -text-warning"></i> <span class="-text-warning">1 Failing</span> test cases  (<span class="-text-warning">2</span> expressions).
 
-### `operator()()` must return what its docs says it will return
+### `operator()()` must return what its docs say it will return
 
 Defined in [sampleClassTests.C#14](https://github.com/FoamScience/OpenFOAMDocsWebpages/blob/main/tests/lib2/sampleClassTests.C#L14)
 
@@ -34,7 +34,7 @@ With expressions:
 Belonging to the test section scoped as:
 
 ```
-`operator()()` must return what its docs says it will return
+`operator()()` must return what its docs say it will return
 ```
 
 
@@ -45,10 +45,10 @@ Belonging to the test section scoped as:
 Belonging to the test section scoped as:
 
 ```
-`operator()()` must return what its docs says it will return
+`operator()()` must return what its docs say it will return
 ```
 
-### incrementing a sampleClass object must be reflected on the x member
+### Incrementing a sampleClass object must be reflected on the x member
 
 Defined in [sampleClassTests.C#25](https://github.com/FoamScience/OpenFOAMDocsWebpages/blob/main/tests/lib2/sampleClassTests.C#L25)
 
@@ -62,7 +62,7 @@ With expressions:
 Belonging to the test section scoped as:
 
 ```
-incrementing a sampleClass object must be reflected on the x member
+Incrementing a sampleClass object must be reflected on the x member
 ```
 
 
@@ -73,5 +73,5 @@ incrementing a sampleClass object must be reflected on the x member
 Belonging to the test section scoped as:
 
 ```
-incrementing a sampleClass object must be reflected on the x member
+Incrementing a sampleClass object must be reflected on the x member
 ```
