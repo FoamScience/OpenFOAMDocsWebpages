@@ -1,10 +1,11 @@
 
+/// @output_section author:elwardi
 namespace Foam {
 
-/// Global typedef using using. Not a typo :face_with_tears_of_joy:
+/// Global typedef using using. Not a typo :wave: :joy:
 using coolType1 = int;
 
-/// Global typedef using typedef. Also not a typo :face_with_hand_over_mouth:
+/// Global typedef using typedef. Also not a typo :wink:
 typedef int coolType2;
 
 /// An initialized constexpr

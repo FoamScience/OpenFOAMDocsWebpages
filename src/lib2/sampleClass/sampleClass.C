@@ -2,9 +2,9 @@
 
 namespace Foam {
 
+/// Documentation and implementation defer for this function
+/// It's supposed to return $R^{-2.5x}$ :scream:
 double sampleClass::operator()() {
-    /// Documentation and implementation defer for this function
-    /// It's supposed to return $R^{-2.5x}$ :face_screaming_in_fear:
     return R;
 }
 

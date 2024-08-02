@@ -11,7 +11,7 @@ namespace Foam {
 /// if required.
 /// @note This is an inline note
 /// @warning And an inline warning
-/// @hyde-owner elwardi
+/// @output_section author:elwardi
 class sampleClass {
 public:
 
@@ -25,12 +25,9 @@ public:
 
     /// @brief Sub-item spinner to showcase multi-line briefs
     /// so here is the second line
-    /// @hyde-owner elwardi
-    /// @hyde-owner another
     template<class T>
     requires std::regular<T>
     struct subItem {
-        /// Store the subItem
         T a;
     };
 

@@ -13,7 +13,7 @@ extern argList* argsPtr;
 
 TEST_CASE
 (
-    "`operator()()` must return what its docs says it will return",
+    "`operator()()` must return what its docs say it will return",
     "[cavity][serial]"
 ) {
     int X = GENERATE(1,5);
@@ -24,7 +24,7 @@ TEST_CASE
 
 TEST_CASE
 (
-    "incrementing a sampleClass object must be reflected on the x member",
+    "Incrementing a sampleClass object must be reflected on the x member",
     "[cavity][serial]"
 ) {
     int X = GENERATE(1,5);

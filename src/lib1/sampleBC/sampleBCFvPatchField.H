@@ -9,6 +9,7 @@
 namespace Foam
 {
 
+/// @output_section author:elwardi
 template<class Type>
 class sampleBCFvPatchField
 :
