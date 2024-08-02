@@ -35,7 +35,7 @@ for lib in $libs; do
     echo "Unit tests for lib ${libname}"
     if ! test -f "$TESTS_DOCS/${libname}/_index.md"; then
         mkdir -p "$TESTS_DOCS/${libname}"
-        printf -- "---\ntitle: Unit Tests\nlayout: unittests\n---" >  "$TESTS_DOCS/${libname}/_index.md"
+        printf -- "---\ntitle: ${libname} tests\nlayout: unittest\n---" >  "$TESTS_DOCS/${libname}/_index.md"
     fi
     files=$(find -L "$lib" -name '*Tests.C')
     echo $files
