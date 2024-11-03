@@ -1,0 +1,53 @@
+{{ if eq .Page.Params.layout "adr" }}
+{{ if eq .Page.Params.status "enforced" }}
+<div>
+    {{ $.Page.RenderString `{{< alert title="Enforced ADR" color="primary" >}} This ADR is accepted and in effect. {{< /alert >}}` }}
+</div>
+<h1>
+    <i class="fa-solid fa-check-square -text-primary"></i>
+    {{ .Page.Params.title }}
+</h1>
+{{ else if eq .Page.Params.status "proposed" }}
+<div>
+    {{ $.Page.RenderString `{{< alert title="Proposed ADR" color="success" >}} This ADR is proposed and waiting for acceptance, so not yet enforced. {{< /alert >}}` }}
+</div>
+<h1>
+    <i class="fa-solid fa-hourglass-start -text-success"></i>
+    {{ .Page.Params.title }}
+</h1>
+{{ else if eq .Page.Params.status "rejected" }}
+<div>
+    {{ $.Page.RenderString `{{< alert title="Rejected ADR" color="danger" >}} This ADR was rejected so not in effect. {{< /alert >}}` }}
+</div>
+<h1>
+    <i class="fa-solid fa-square-xmark -text-danger"></i>
+    {{ .Page.Params.title }}
+</h1>
+{{ else if eq .Page.Params.status "deprecated" }}
+<div>
+    {{ $.Page.RenderString `{{< alert title="Deprecated ADR" color="secondary" >}} This ADR is deprecated and will be revised within few weeks. {{< /alert >}}` }}
+</div>
+<h1>
+    <i class="fa-solid fa-hourglass-start fa-rotate-180 -text-secondary"></i>
+    {{ .Page.Params.title }}
+</h1>
+{{ else if eq .Page.Params.status "superseded" }}
+<div>
+    {{ $.Page.RenderString `{{< alert title="Superseded ADR" color="success" >}} This ADR was retired and superseded by another decision. {{< /alert >}}` }}
+</div>
+<h1>
+    <i class="fa-solid fa-arrow-right-arrow-left -text-success"></i>
+    {{ .Page.Params.title }}
+</h1>
+{{ else if eq .Page.Params.status "under-review" }}
+<div>
+    {{ $.Page.RenderString `{{< alert title="Under-review ADR" color="success" >}} This ADR is under review, so not yet enforced. {{< /alert >}}` }}
+</div>
+<h1>
+    <i class="fa-solid fa-magnifying-glass -text-success"></i>
+    {{ .Page.Params.title }}
+</h1>
+{{ else }}
+<h1> Architecture Decision Records </h1>
+{{ end }}
+{{ end }}

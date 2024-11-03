@@ -1,0 +1,13 @@
+{{ if .Page.Params.related }}
+{{ $allpgs := .Site.Pages }}
+<div>
+    <b>Related ADRs:</b>
+    <ul>
+        {{ range $idx,$val := .Page.Params.related }}
+        {{ $c := index (where $allpgs "Params.title" "==" $val ) 0 }}
+        {{- $formattedDate := dateFormat "Jan 2, 2006" $c.Params.date -}}
+        <li><a href="{{ $c.Params.permaLink }}">{{ $c.Params.title }}</a> ({{ $formattedDate }})</li>
+        {{ end}}
+    </ul>
+</div>
+{{ end }}

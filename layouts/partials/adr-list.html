@@ -1,0 +1,23 @@
+<h2>List of ADRs</h2>
+{{ $adrPages := where .Site.Pages "Type" "adr" }}
+<ul>
+    {{ range $adrPages }}
+    {{ if .Page.Params.status }}
+    <li>
+    {{ if eq .Page.Params.status "enforced" }}
+        <a href="{{ .RelPermalink }}"><i class="fa-solid fa-check-square -text-primary"></i> {{ .Title }}</a>
+    {{ else if eq .Page.Params.status "proposed" }}
+        <a href="{{ .RelPermalink }}"><i class="fa-solid fa-hourglass-start -text-success"></i> {{ .Title }}</a>
+    {{ else if eq .Page.Params.status "rejected" }}
+        <a href="{{ .RelPermalink }}"><i class="fa-solid fa-square-xmark -text-danger"></i> {{ .Title }}</a>
+    {{ else if eq .Page.Params.status "deprecated" }}
+        <a href="{{ .RelPermalink }}"><i class="fa-solid fa-hourglass-start fa-rotate-180 -text-secondary"></i> {{ .Title }}</a>
+    {{ else if eq .Page.Params.status "superseded" }}
+        <a href="{{ .RelPermalink }}"><i class="fa-solid fa-arrow-right-arrow-left -text-success"></i> {{ .Title }}</a>
+    {{ else if eq .Page.Params.status "under-review" }}
+        <a href="{{ .RelPermalink }}"><i class="fa-solid fa-magnifying-glass -text-success"></i> {{ .Title }}</a>
+    {{ end }}
+    </li>
+    {{ end }}
+    {{ end }}
+</ul>
