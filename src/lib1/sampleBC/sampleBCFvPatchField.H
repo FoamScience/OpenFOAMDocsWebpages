@@ -3,13 +3,15 @@
 
 #include "fixedValueFvPatchFields.H"
 #include "Function1.H"
+#include <concepts>
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
 
-/// @output_section author:elwardi
+word sampleBCType = "sampleBC";
+
 template<class Type>
 class sampleBCFvPatchField
 :
@@ -50,7 +52,7 @@ class sampleBCFvPatchField
 public:
 
     //- Runtime type information
-    TypeName("sampleBC");
+    TypeName(sampleBCType);
 
 
     // Constructors
