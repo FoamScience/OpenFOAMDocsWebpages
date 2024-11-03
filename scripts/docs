@@ -36,6 +36,7 @@ docs_usage() {
   printf "%s\n" "Commands:"
   printf "  %s   Generate or update API docs for what's in src/ folder\n" "api      "
   printf "  %s   Generate or update docs for the unit tests ran by foamUT\n" "unittests"
+  printf "  %s   Copy decisions folder into the docs website tree\n" "adrs     "
   echo
 
   # :command.long_usage
@@ -52,11 +53,6 @@ docs_usage() {
 
     # :command.usage_environment_variables
     printf "%s\n" "Environment Variables:"
-
-    # :environment_variable.usage
-    printf "  %s\n" "FOAM_ETC (required)"
-    printf "    Source your OpenFOAM environment\n"
-    echo
 
     # :environment_variable.usage
     printf "  %s\n" "DOCS_DIR (required)"
@@ -90,6 +86,14 @@ docs_api_usage() {
     # :command.usage_fixed_flags
     printf "  %s\n" "--help, -h"
     printf "    Show this help\n"
+    echo
+
+    # :command.usage_environment_variables
+    printf "%s\n" "Environment Variables:"
+
+    # :environment_variable.usage
+    printf "  %s\n" "FOAM_ETC (required)"
+    printf "    Source your OpenFOAM environment\n"
     echo
 
     # :command.usage_examples
@@ -137,9 +141,51 @@ docs_unittests_usage() {
     printf "    Set the path to your foamUT clone\n"
     echo
 
+    # :environment_variable.usage
+    printf "  %s\n" "FOAM_ETC (required)"
+    printf "    Source your OpenFOAM environment\n"
+    echo
+
     # :command.usage_examples
     printf "%s\n" "Examples:"
     printf "  FOAM_FOAMUT=/tmp/foamUT DOCS_DIR=~/repos/MyProjectDocs/ ./docs ut\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+docs_adrs_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "docs adrs - Copy decisions folder into the docs website tree\n"
+    echo
+
+  else
+    printf "docs adrs - Copy decisions folder into the docs website tree\n"
+    echo
+
+  fi
+
+  printf "Alias: adr\n"
+  echo
+
+  printf "%s\n" "Usage:"
+  printf "  docs adrs\n"
+  printf "  docs adrs --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+    # :command.usage_examples
+    printf "%s\n" "Examples:"
+    printf "  DOCS_DIR=~/repos/MyProjectDocs/ ./docs adr\n"
     echo
 
   fi
@@ -307,6 +353,17 @@ docs_unittests_command() {
 
 }
 
+# :command.function
+docs_adrs_command() {
+  # src/adrs_command.sh
+  #!/usr/bin/env bash
+  _repo_root=$(git rev-parse --show-toplevel)
+  echo "Updating Docs for ADRs from"
+  echo "Copying decisions from ${_repo_root}/docs/decisions to $DOCS_DIR/content/en/adr"
+  cp -rT "${_repo_root}/docs/decisions" "$DOCS_DIR/content/en/adr"
+
+}
+
 # :command.parse_requirements
 parse_requirements() {
   # :command.fixed_flags_filter
@@ -332,12 +389,7 @@ parse_requirements() {
 
   # :command.environment_variables_filter
 
-  env_var_names+=("FOAM_ETC")
   env_var_names+=("DOCS_DIR")
-  if [[ -z "${FOAM_ETC:-}" ]]; then
-    printf "missing required environment variable: FOAM_ETC\n" >&2
-    exit 1
-  fi
   if [[ -z "${DOCS_DIR:-}" ]]; then
     printf "missing required environment variable: DOCS_DIR\n" >&2
     exit 1
@@ -360,6 +412,13 @@ parse_requirements() {
       action="unittests"
       shift
       docs_unittests_parse_requirements "$@"
+      shift $#
+      ;;
+
+    adrs | adr)
+      action="adrs"
+      shift
+      docs_adrs_parse_requirements "$@"
       shift $#
       ;;
 
@@ -416,6 +475,14 @@ docs_api_parse_requirements() {
 
     esac
   done
+
+  # :command.environment_variables_filter
+
+  env_var_names+=("FOAM_ETC")
+  if [[ -z "${FOAM_ETC:-}" ]]; then
+    printf "missing required environment variable: FOAM_ETC\n" >&2
+    exit 1
+  fi
 
   # :command.dependencies_filter
   if command -v python >/dev/null 2>&1; then
@@ -497,13 +564,62 @@ docs_unittests_parse_requirements() {
   # :command.environment_variables_filter
 
   env_var_names+=("FOAM_FOAMUT")
+  env_var_names+=("FOAM_ETC")
   if [[ -z "${FOAM_FOAMUT:-}" ]]; then
     printf "missing required environment variable: FOAM_FOAMUT\n" >&2
+    exit 1
+  fi
+  if [[ -z "${FOAM_ETC:-}" ]]; then
+    printf "missing required environment variable: FOAM_ETC\n" >&2
     exit 1
   fi
 
   # :command.command_filter
   action="unittests"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+docs_adrs_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        docs_adrs_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="adrs"
 
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
@@ -549,6 +665,7 @@ run() {
   case "$action" in
     "api") docs_api_command ;;
     "unittests") docs_unittests_command ;;
+    "adrs") docs_adrs_command ;;
   esac
 }
 

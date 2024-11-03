@@ -3,10 +3,10 @@
 cd "${0%/*}" || exit
 
 wclean src/lib1
-cd src/lib1
+cd src/lib1 || exit 1
 bear -- wmake libso
-cd -
+cd - || exit 1
 wclean src/lib2
-cd src/lib1
+cd src/lib1 || exit 1
 bear -- wmake libso
-cd -
+cd - || exit 1

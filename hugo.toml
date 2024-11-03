@@ -16,11 +16,12 @@ category = "categories"
 contributor = "contributors"
 api_tag = "api_tags"
 api_namespaces = "api_namespaces"
+adr_tag = "adr_tags"
 
 [params.taxonomy]
-taxonomyCloud = ["tags", "categories", "contributors", "api_tags", "api_namespaces"]
-taxonomyCloudTitle = ["Tag Cloud", "Categories", "Contributors", "API Tags", "API Namespaces"]
-taxonomyPageHeader = ["tags", "categories", "contributors", "api_tags", "api_namespaces"]
+taxonomyCloud = ["tags", "categories", "contributors", "api_tags", "api_namespaces", "adr_tags"]
+taxonomyCloudTitle = ["Tag Cloud", "Categories", "Contributors", "API Tags", "API Namespaces", "ADR Tags"]
+taxonomyPageHeader = ["tags", "categories", "contributors", "api_tags", "api_namespaces", "adr_tags"]
 
 
 # Highlighting config
