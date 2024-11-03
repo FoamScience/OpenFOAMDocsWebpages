@@ -11,6 +11,7 @@ namespace Foam {
 /// if required.
 /// @note This is an inline note
 /// @warning And an inline warning
+/// @output_section author:elwardi
 class sampleClass {
 public:
 
@@ -30,11 +31,8 @@ public:
         T a;
     };
 
-    /// Construct from x
-    sampleClass(int x)
-    :
-        x_(x)
-    {}
+    /// Construct from `x`
+    sampleClass(int x) : x_(x) {};
 
     /// Default move construction
     sampleClass(sampleClass &&) = default;

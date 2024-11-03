@@ -1,13 +1,6 @@
 
+/// @output_section author:elwardi
 namespace Foam {
-
-/**
- * Test concept.
- */
-template<class T>
-concept UIElement = requires {
-    { T::init() } -> std::convertible_to<bool>;
-};
 
 /// Global typedef using using. Not a typo :wave: :joy:
 using coolType1 = int;
