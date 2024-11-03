@@ -17,8 +17,6 @@ url: /api/headers/
 
   - [`lib1/sampleBC/sampleBCFvPatchFields.H`]({{% ref "/api/headers/doc_lib1__sampleBC__sampleBCFvPatchFields#standardese-samplebcfvpatchfields-h" %}})
 
-  - [`lib2/functions.C`]({{% ref "/api/headers/doc_lib2__functions#standardese-functions-c" %}})
-
   - [`lib2/sampleClass/sampleClass.C`]({{% ref "/api/headers/doc_lib2__sampleClass__sampleClass#standardese-sampleclass-c" %}})
 
   - [`lib2/sampleClass/sampleClass.H`]({{% ref "/api/headers/doc_lib2__sampleClass__sampleClass#standardese-sampleclass-h" %}})

@@ -1,9 +1,9 @@
 ---
 layout: unittest
 tags:
-- '#sampleClassTests'
-- serial
 - cavity
+- serial
+- '#sampleClassTests'
 title: Unit tests for lib2 - sampleClass
 ---
 
@@ -16,7 +16,7 @@ The unit tests pages are automatically generated from the test reports. Some imp
 
 ## Serial unit tests for `sampleClass` in `lib2` library on `[cavity]` case
 
-Tests were performed using [Catch2](https://github.com/catchorg/Catch2) version `3.6.0` (rng-seed: `3966308918`) with the following filters: `[serial] [cavity] [#sampleClassTests]`.
+Tests were performed using [Catch2](https://github.com/catchorg/Catch2) version `3.6.0` (rng-seed: `882263053`) with the following filters: `[serial] [cavity] [#sampleClassTests]`.
 
 <i class="fa-sharp fa-solid fa-check -text-primary"></i> <span class="-text-primary">1 Passing</span> test cases  (<span class="-text-primary">2</span> expressions), <i class="fa-sharp fa-solid fa-circle-exclamation -text-warning"></i> <span class="-text-warning">1 Failing</span> test cases  (<span class="-text-warning">2</span> expressions).
 
