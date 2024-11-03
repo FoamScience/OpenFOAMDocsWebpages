@@ -7,6 +7,6 @@ cd src/lib1 || exit 1
 bear -- wmake libso
 cd - || exit 1
 wclean src/lib2
-cd src/lib1 || exit 1
+cd src/lib2 || exit 1
 bear -- wmake libso
 cd - || exit 1
