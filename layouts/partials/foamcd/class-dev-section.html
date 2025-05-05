@@ -1,0 +1,169 @@
+{{ $foamCD := .Page.Params.foamCD }}
+{{ $scratch := .Scratch }}
+
+<!-- Check beforehand if the dev section will be populated -->
+
+{{ $output_implementation := or $foamCD.private_methods (or $foamCD.protected_methods (or $foamCD.protected_methods $foamCD.protected_bases)) }}
+{{ $output_openfoam_dsl := not (eq $foamCD.openfoam_dsl.RTS.class_role "unknown") }}
+{{ $output_implementation = or $output_implementation $output_openfoam_dsl }}
+
+{{ $output_enclosed_private := false }}
+{{ $output_enclosed_protected := false }}
+{{ with $foamCD.enclosed_entities }}
+  {{ range $eidx, $ev := . }}
+    {{ if eq ($ev.access | lower ) "private"}} {{ $output_enclosed_private = true }} {{ end }}
+    {{ if eq ($ev.access | lower ) "protected"}} {{ $output_enclosed_protected = true }} {{ end }}
+  {{ end }}
+{{ end }}
+{{ $output_implementation = or $output_implementation (or $output_enclosed_private $output_enclosed_protected) }}
+{{ $output_implementation = or $output_implementation  $foamCD.member_type_aliases.protected }}
+{{ $output_implementation = or $output_implementation  $foamCD.member_type_aliases.private }}
+
+{{ $output_dev_section := or $output_implementation $foamCD.knowledge_requirements }}
+
+{{ if $output_dev_section }}
+
+    {{ partial "foamcd/api-heading.html" (dict "title" "For API developers/extenders" "level" 2 "scratch" $scratch)}}
+    {{ with $foamCD.knowledge_requirements }}
+    <div class="alert alert-info" role="info">
+    <p>Requires some understanding of the following C++/DSL features:</p>
+    <ul>
+    {{ range $req := . }}
+        <li> {{ replace $req "_" " " | upper }} </li>
+    {{ end }}
+    </ul> 
+    </div>
+    {{ end }}
+    
+    {{ if $output_implementation }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Implementation details" "level" 3 "scratch" $scratch)}}
+    
+        {{ with $foamCD.protected_methods }}
+        {{ partial "foamcd/api-heading.html" (dict "title" "Protected methods" "level" 4 "scratch" $scratch)}}
+        {{ range $midx,$method := . }}
+          {{ partial "foamcd/method-entry.html" $method }}
+        {{ end }}
+        {{ end }}
+        
+        {{ with $foamCD.protected_bases }}
+        {{ partial "foamcd/api-heading.html" (dict "title" "Inherited protected methods" "level" 4 "scratch" $scratch)}}
+        {{ range $cidx, $base := . }}
+            <div class="card" style="margin-bottom: 10px;">
+            <div class="card-header">
+            <small class="badge bg-primary">
+                {{ if $base.is_direct }} Direct parent {{ else }} {{ $base.depth }}-level parent {{ end }}
+            </small>
+            <br/>
+            From <a href="/api/{{ $base.namespace }}_{{ $base.name }}">
+              {{ highlight (printf "%s::%s" $base.namespace $base.name ) "cpp" "hl_inline=true" }}
+            </a>
+            </div>
+            
+            <div class="card-body">
+            {{ with $base.protected_methods }}
+            {{ range $cidx, $method := . }}
+              {{ partial "foamcd/method-entry.html" $method }}
+            {{ end }}
+            {{ end }}
+            </div>
+            </div>
+        {{ end }}
+        {{ end }}
+        
+        {{ if $output_enclosed_protected }}
+          {{ partial "foamcd/api-heading.html" (dict "title" "protectedly enclosed types" "level" 3 "scratch" $scratch)}}
+          {{ range $eidx, $ee := $foamCD.enclosed_entities }}
+            {{ if eq ($ee.access | lower) "protected" }}
+            {{ partial "foamcd/class-entry.html" $ee }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+  
+        {{ with $foamCD.member_type_aliases.protected }}
+          {{ partial "foamcd/api-heading.html" (dict "title" "Protected member type aliases" "level" 3 "scratch" $scratch)}}
+          {{ range $eidx, $mtype := . }}
+            {{ partial "foamcd/type-alias.html" . }}
+          {{ end }}
+        {{ end }}
+  
+        {{ with $foamCD.private_methods }}
+        {{ partial "foamcd/api-heading.html" (dict "title" "Private methods" "level" 4 "scratch" $scratch)}}
+        {{ range $midx,$method := . }}
+          {{ partial "foamcd/method-entry.html" $method }}
+        {{ end }}
+        {{ end }}
+        
+        {{ with $foamCD.private_bases }}
+        {{ partial "foamcd/api-heading.html" (dict "title" "Inherited private methods" "level" 4 "scratch" $scratch)}}
+        {{ range $cidx, $base := . }}
+            <div class="card" style="margin-bottom: 10px;">
+            <div class="card-header">
+            <small class="badge bg-primary">
+                {{ if $base.is_direct }} Direct parent {{ else }} {{ $base.depth }}-level parent {{ end }}
+            </small>
+            <br/>
+            From <a href="/api/{{ $base.namespace }}_{{ $base.name }}">
+              {{ highlight (printf "%s::%s" $base.namespace $base.name ) "cpp" "hl_inline=true" }}
+            </a>
+            </div>
+            
+            <div class="card-body">
+            {{ with $base.private_methods }}
+            {{ range $cidx, $method := . }}
+              {{ partial "foamcd/method-entry.html" $method }}
+            {{ end }}
+            {{ end }}
+            </div>
+            </div>
+        {{ end }}
+        {{ end }}
+    
+        {{ if $output_enclosed_private }}
+          {{ partial "foamcd/api-heading.html" (dict "title" "Privately enclosed types" "level" 3 "scratch" $scratch)}}
+          {{ range $eidx, $ee := $foamCD.enclosed_entities }}
+            {{ if eq ($ee.access | lower) "private" }}
+            {{ partial "foamcd/class-entry.html" $ee }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+  
+        {{ with $foamCD.member_type_aliases.private }}
+          {{ partial "foamcd/api-heading.html" (dict "title" "Private member type aliases" "level" 3 "scratch" $scratch)}}
+          {{ range $eidx, $mtype := . }}
+            {{ partial "foamcd/type-alias.html" . }}
+          {{ end }}
+        {{ end }}
+  
+        {{ if $output_openfoam_dsl }}
+        {{ partial "foamcd/api-heading.html" (dict "title" "OpenFOAM DSL integration" "level" 4 "scratch" $scratch)}}
+        {{ $classname := .Page.Title }}
+        {{ with $foamCD.openfoam_dsl.RTS }}
+            {{ if .is_rts_base }}
+            <p> {{ highlight (printf "%s::%s" $foamCD.namespace $classname) "cpp" "hl_inline=true"}}
+                is a <strong>base class</strong> participating in the following RunTime Selecion Tables:
+                <ul>
+                {{ $tps := .rts_table_types }}
+                {{ range $i, $v := .RTS_table_names }}
+                {{ $tp := index $tps $i  }}
+                <li>{{ highlight (printf "%s -> %s" $v $tp ) "cpp" "hl_inline=true"}}</li>
+                {{ end}}
+                </ul>
+            </p>
+            {{ end }}
+            {{ if .is_rts_child }}
+            <p> {{ highlight (printf "%s::%s" $foamCD.namespace $classname) "cpp" "hl_inline=true"}}
+                is a <strong>child (implementation) class</strong>, attached to the following RTS bases:
+                <ul>
+                {{ range $v := .base_rts_classes }}
+                <li>
+                    {{ highlight (printf "%s::%s ->" $v.namespace $v.name $v.rts_name) "cpp" "hl_inline=true"}}
+                </li>
+                {{ end }}
+                </ul>
+            </p>
+            {{ end }}
+        {{ end }}
+        {{ end }}
+    
+    {{ end }}
+{{ end }}

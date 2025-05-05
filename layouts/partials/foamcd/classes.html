@@ -1,0 +1,18 @@
+{{ if .Page.Params.foamCD.classes_and_class_templates }}
+  {{ $site := .Site }}
+  <h2>Classes</h2>
+  <div>
+    {{ $namespace := "" }}
+    {{ range $index, $class := .Page.Params.foamCD.classes_and_class_templates }}
+      {{ if eq $class.name "<<separator>>" }}
+        <hr />
+      {{ else }}
+        {{ if ne $namespace $class.namespace }}
+          {{ $namespace = $class.namespace }}
+          <h3>Namespace: {{ $namespace }}</h3>
+        {{ end }}
+        {{ partial "foamcd/class-entry" (dict "entry" $class "site" $site ) }}
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

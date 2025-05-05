@@ -1,0 +1,17 @@
+{{ if .Page.Params.foamCD.entry_points }}
+  <h2>Entry Points</h2>
+  <div>
+    {{ $namespace := "" }}
+    {{ range $index, $entry := .Page.Params.foamCD.entry_points }}
+      {{ if eq $entry.name "<<separator>>" }}
+        <hr />
+      {{ else }}
+        {{ if ne $namespace $entry.namespace }}
+          {{ $namespace = $entry.namespace }}
+          <h3>Entry points in namespace: {{ $namespace }}</h3>
+        {{ end }}
+        {{ partial "foamcd/class-entry" (dict "entry" $entry) }}
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

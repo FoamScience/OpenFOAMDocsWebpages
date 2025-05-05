@@ -1,0 +1,58 @@
+name: odw
+help: Opinionated API and unit-testing docs for OpenFOAM-related projects
+version: 0.1.0
+
+dependencies:
+  uv: "UV is required to manage python dependencies - to install it: `curl -LsSf https://astral.sh/uv/install.sh | sh`"
+  bear: "Bear is required to generate compilation databases - https://github.com/rizsotto/Bear"
+  jq: "jq is used to process compilation databases - https://jqlang.org/"
+  git: "Git is used to fetch branch/reference info from local repositories"
+
+environment_variables:
+- name: FOAM_SRC
+  help: Source your OpenFOAM environment.
+  required: true
+- name: DOCS_DIR
+  help: >
+        Set the root folder of the Hugo repository where the docs should be stored.
+        Currently, this maps to:
+        API docs -> content/en/api/libs*, without touching content/en/api/_index.md
+        UT  docs -> content/en/tests/libs*
+        ADRS     -> content/en/adr
+  required: true
+- name: CODE_SRC_DIR
+  help: >
+        Set the src folder of the C++ sources to document. This is where your libraries reside.
+  required: true
+- name: CODE_TEST_DIR
+  help: >
+        Set the tests folder for the unit tests. Enabling this will turn on unit tests processing.
+- name: FOAM_FOAMUT
+  help: >
+        Point to where foamUT should be cloned. Set to /dev/null if not doing unit tests;
+        Also, if testCases folder exists on the same level as $CODE_TEST_DIR, the test cases
+        are copied over.
+
+commands:
+- name: docs
+  help: Generate or update API docs for what's in src/ folder, with support for unit test linking
+  args:
+  - name: databases_folder
+    required: True
+  flags:
+  - long: --foamcd-config
+    short: -c
+    arg: foamcd-config
+    help: >
+          Template foamcd-config. Some entries are not honored even if provided within this config:
+          - markdown.project_name
+          - parser.compile_commands_dir
+          - database.path
+  - long: --plugin-list
+    short: -p
+    arg: plugin-list
+    help: >
+          FoamCD plugins to load, comma-separated. Eg. "openfoam,openfoam_reflection"
+    conflicts: [--foam-config]
+  examples:
+  - DOCS_DIR=~/repos/MyHugoSite/ CODE_SRC_DIR=~/repos/myLibs/src ./odw docs /tmp/foamcd.dbs

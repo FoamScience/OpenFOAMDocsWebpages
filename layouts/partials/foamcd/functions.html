@@ -1,0 +1,18 @@
+{{ if .Page.Params.foamCD.functions_and_function_templates }}
+  <h2>Free Functions</h2>
+  <div>
+    {{ $namespace := "" }}
+    {{ range $index, $func := .Page.Params.foamCD.functions_and_function_templates }}
+      {{ if eq $func.name "<<separator>>" }}
+        <hr />
+      {{ else }}
+        {{ if ne $namespace $func.namespace }}
+          {{ $namespace = $func.namespace }}
+          <h3>Namespace: {{ $namespace }}</h3>
+        {{ end }}
+        {{ partial "foamcd/function-entry" (dict "entry" $func) }}
+
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

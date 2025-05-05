@@ -1,0 +1,22 @@
+{{ with .Scratch.Get "APITOC" }}
+<hr/>
+<div class="td-toc">
+<nav id="TableOfContents">
+  <ul>
+    {{ range $idx, $tv := . }}
+      {{ if eq .level 2 }}
+      <li><a href="#{{ .id }}">{{ .title }}</a></li>
+      {{ end }}
+      {{ if ge .level 3 }}
+      <li>
+        {{ $sublevel := sub .level 2 }}
+        {{ range seq $sublevel }}<ul><li>{{ end }}
+        <a href="#{{ .id }}">{{ .title }}</a>
+        {{ range seq $sublevel }}</li></ul>{{ end }}
+      </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</nav>
+{{ end }}
+</div>

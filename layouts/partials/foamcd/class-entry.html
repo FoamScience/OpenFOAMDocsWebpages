@@ -1,0 +1,90 @@
+{{ $entry := .entry }}
+{{ $site := .site }}
+{{ $page := false }}
+{{ range site.AllPages }}
+  {{ $re := (printf "%s_%s/" $entry.namespace $entry.name) }}
+  {{ if and (findRE $re .RelPermalink) (eq .Title $entry.name) }}
+    {{ $page = . }}
+  {{ end }}
+{{ end }}
+<div class="card" style="margin-bottom: 10px;">
+
+  <div class="card-header">
+  {{ with .entry.class_role }}
+      {{ if eq . "base" }}
+      <small class="badge bg-primary">RTS base</small>
+      {{ else }}
+      <small class="badge bg-primary">{{ . }}</small>
+      {{ end }}
+  {{ end }}
+  {{ with .entry.rts_names }}
+    <span title="RTS suport">
+      <small class="badge bg-secondary">Tables: {{ . }}</small>
+    </span>
+  {{ end }}
+  {{ with .entry.manual_entry_point }}
+    <span title="Manually highlighted">
+      <small class="badge bg-success">Highlight</small>
+    </span>
+  {{ end }}
+  {{ if or (index .entry "class_role" ) (index .entry "rts_names") (index .entry "manual_entry_point") }}
+  <br/>
+  {{ end }}
+
+  {{ with .entry.uri }}
+  {{ $entry_url := . }}
+  {{ if reflect.IsSlice $entry_url }}
+    {{ $entry_url = index  $entry_url 0 }}
+  {{ end }}
+  <a href="{{ $entry_url }}">
+    {{ $entry.name }}
+  </a>
+  {{ else }}
+    <!-- If no explicit URI, look for class pages if we find a match -->
+    {{ if $page }}
+      <a href="{{ $page.RelPermalink }}">{{ $entry.name }}</a>
+    {{ else }}
+      {{ $entry.name }}
+    {{ end }}
+  {{ end }}
+
+  </div>
+
+  <div class="card-body">
+  <div>
+    {{ with .entry.documentation.description }}
+      <span>
+        {{ strings.TrimSpace . }}
+      </span><br/>
+    {{ else }}
+    {{ if $page }}
+    {{ with $page.Params.foamCD.documentation.description }}
+      <span>
+        {{ strings.TrimSpace . }}
+      </span><br/>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+  </div>
+  <div class="row align-items-start">
+    {{ with .entry.declaration_file }}
+    <div class="col">
+    <p>Declaration:</p>
+    <ul>
+    <li><a href="{{ . }}">{{ replaceRE ".*/" "" . }}</a></li>
+    </ul>
+    </div>
+    {{ end }}
+    {{ with .entry.definition_files }}
+    <div class="col">
+    <p>Definition:</p>
+    <ul>
+      {{ range $idx, $def := . }}
+        <li><a href="{{ $def }}">{{ replaceRE ".*/" "" $def }}</a></li>
+      {{ end }}
+    </ul>
+    </div>
+    {{ end }}
+  </div>
+  </div>
+</div>
