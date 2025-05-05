@@ -1,0 +1,54 @@
+{{ $entry := .entry }}
+<div class="card" style="margin-bottom: 10px;">
+
+  <div class="card-header">
+  {{ $break := false }}
+  {{ with .entry.kind }}
+      {{ if eq . "FUNCTION_TEMPLATE" }}
+      <small class="badge bg-primary">template</small>
+      {{ $break = true }}
+      {{ end }}
+  {{ end }}
+  {{ with .entry.signature }}
+      {{ if and (eq $entry.kind "FUNCTION_DECL") (strings.HasPrefix . "template") }}
+      <small class="badge bg-secondary">template-specialization</small>
+      {{ $break = true }}
+      {{ end }}
+  {{ end }}
+  {{ if $break }}
+  <br/>
+  {{ end }}
+  {{ .entry.name }}
+  </div>
+
+  <div class="card-body">
+  {{ highlight $entry.signature "cpp" }}
+  <div>
+    {{ with .entry.description }}
+      <span>
+        <small>{{ . }}</small>
+      </span>
+    {{ end }}
+  </div>
+  <div class="row align-items-start">
+    {{ with .entry.declaration_file }}
+    <div class="col">
+    <p>Declaration:</p>
+    <ul>
+    <li><a href="{{ . }}">{{ replaceRE ".*/" "" . }}</a></li>
+    </ul>
+    </div>
+    {{ end }}
+    {{ with .entry.definition_files }}
+    <div class="col">
+    <p>Definition:</p>
+    <ul>
+      {{ range $idx, $def := . }}
+      <li><a href="{{ . }}">{{ replaceRE ".*/" "" . }}</a></li>
+      {{ end }}
+    </ul>
+    </div>
+    {{ end }}
+  </div>
+  </div>
+</div>

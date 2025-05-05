@@ -1,0 +1,135 @@
+{{ $foamCD := .Page.Params.foamCD }}
+{{ $scratch := .Scratch }}
+<!-- Check beforeband if sections will be populated -->
+{{ $output_creation := false }}
+{{ if or (or $foamCD.ctors $foamCD.dtor) $foamCD.factor_methods  }} {{ $output_creation = true }} {{ end }}
+{{ $output_abstractions := false }}
+{{ if or $foamCD.interface.abstract_methods $foamCD.interface.abstract_in_base_methods }} {{ $output_abstractions = true }} {{ end }}
+{{ $output_public_interface := false }}
+{{ if or $foamCD.interface.public_methods $foamCD.interface.public_bases }} {{ $output_public_interface = true }} {{ end }}
+{{ $output_enclosed_public := false }}
+{{ with $foamCD.enclosed_entities }}
+  {{ range $eidx, $ev := . }}
+    {{ if eq ($ev.access | lower ) "public"}} {{ $output_enclosed_public = true }} {{ end }}
+  {{ end }}
+{{ end }}
+{{ $output_public_interface = or $output_public_interface $output_enclosed_public }}
+{{ $output_public_interface = or $output_public_interface  $foamCD.member_type_aliases.public }}
+
+{{ $output_user_section := or $foamCD.unit_tests (or $output_public_interface (or $output_creation $output_abstractions)) }}
+
+<!-- Actual formatting -->
+{{ if $output_user_section }}
+
+  {{ partial "foamcd/api-heading.html" (dict "title" "For API users" "level" 2 "scratch" $scratch)}}
+  {{ partial "foamcd/class-reflection.html" $foamCD }}
+  {{ if $output_creation }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Creation" "level" 3 "scratch" $scratch)}}
+    {{ with $foamCD.ctors }}
+      {{ partial "foamcd/api-heading.html" (dict "title" "Constructors" "level" 4 "scratch" $scratch)}}
+      {{ if gt (len .) 0 }}
+      {{ range $midx,$method := . }}
+        {{ partial "foamcd/method-entry.html" $method }}
+      {{ end }}
+      {{ end }}
+    {{ end}}
+    {{ with $foamCD.dtor }}
+      {{ partial "foamcd/api-heading.html" (dict "title" "Destructor" "level" 4 "scratch" $scratch)}}
+      {{ partial "foamcd/method-entry.html" $foamCD.dtor }}
+    {{ end}}
+    {{ with $foamCD.factory_methods }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Factory methods" "level" 4 "scratch" $scratch)}}
+    {{ range $midx,$method := . }}
+      {{ partial "foamcd/method-entry.html" $method }}
+    {{ end }}
+    {{ end}}
+  {{ end }}
+  
+  {{ if $output_abstractions }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Abstractions" "level" 3 "scratch" $scratch)}}
+    {{ with $foamCD.interface.abstract_methods }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Class abstracted behavior" "level" 4 "scratch" $scratch)}}
+    {{ range $midx,$method := . }}
+      {{ partial "foamcd/method-entry.html" $method }}
+    {{ end }}
+    {{ end }}
+    
+    {{ partial "foamcd/api-heading.html" (dict "title" "Abstracted behavior implemented by this class" "level" 4 "scratch" $scratch)}}
+    {{ with $foamCD.interface.abstract_in_base_methods }}
+    {{ range $midx,$method := . }}
+      {{ partial "foamcd/method-entry.html" $method }}
+    {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{ if $output_public_interface }}
+  {{ partial "foamcd/api-heading.html" (dict "title" "Public Interface" "level" 3 "scratch" $scratch)}}
+  
+  {{ with $foamCD.interface.public_methods }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Public methods" "level" 4 "scratch" $scratch)}}
+    {{ range $midx,$method := . }}
+      {{ partial "foamcd/method-entry.html" $method }}
+    {{ end }}
+    {{ else }}
+      <div class="alert alert-info" role="info">
+      This class features no other public methods
+      </div>
+    {{ end }}
+    
+    {{ with $foamCD.interface.public_bases }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Inherited public methods" "level" 4 "scratch" $scratch)}}
+    {{ range $cidx, $base := . }}
+        <div class="card" style="margin-bottom: 10px;">
+        <div class="card-header">
+        <small class="badge bg-primary">
+            {{ if $base.is_direct }} Direct parent {{ else }} {{ $base.depth }}-level parent {{ end }}
+        </small>
+        <br/>
+        From <a href="/api/{{ $base.namespace }}_{{ $base.name }}">
+          {{ highlight (printf "%s::%s" $base.namespace $base.name ) "cpp" "hl_inline=true" }}
+        </a>
+        </div>
+        
+        <div class="card-body">
+        {{ with $base.public_methods }}
+        {{ range $cidx, $method := . }}
+          {{ partial "foamcd/method-entry.html" $method }}
+        {{ end }}
+        {{ end }}
+        </div>
+        </div>
+    {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{ if $output_enclosed_public }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Publicly enclosed types" "level" 3 "scratch" $scratch)}}
+    {{ range $eidx, $ee := $foamCD.enclosed_entities }}
+      {{ if eq ($ee.access | lower) "public" }}
+        {{ partial "foamcd/enclosed-entry.html" (dict "entry" $ee "site" .Site) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{ with $foamCD.member_type_aliases.public }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Public member type aliases" "level" 3 "scratch" $scratch)}}
+    {{ range $eidx, $mtype := . }}
+      {{ partial "foamcd/type-alias.html" . }}
+    {{ end }}
+  {{ end }}
+  
+  {{ with $foamCD.unit_tests }}
+    {{ partial "foamcd/api-heading.html" (dict "title" "Unit tests" "level" 3 "scratch" $scratch)}}
+    <div>
+    <ul>
+    {{ range $tidx,$ut := . }}
+        <li>
+          A {{ highlight .kind "cpp" "hl_inline=true" }} named <a href="{{ .file }}">"{{ .name }}"</a>
+          {{ with .tags }} tagged with {{ highlight . "toml" "hl_inline=true" }} {{ end }}
+        </li> 
+    {{ end }}
+    </ul>
+    </div>
+  {{ end }}
+
+{{ end }}

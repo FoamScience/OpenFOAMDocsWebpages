@@ -1,0 +1,9 @@
+{{ $entry := dict
+    "documentation" .entry.documentation
+    "declaration_file" .entry.file
+    "name" .entry.name
+    "namespace" .entry.namespace
+    "uri" (printf "/api/%s_%s" .entry.namespace (replace .entry.name "::" "_") )
+}}
+{{ $site := .site }}
+{{ partial "foamcd/class-entry.html" (dict "entry" $entry "site" $site) }}

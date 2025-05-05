@@ -1,0 +1,8 @@
+{{ $field := index . 0 }}
+{{ $method := index . 1 }}
+{{ $color := index . 2 }}
+
+{{ if and (index $method $field) (eq (index $method $field) true) }}
+    {{ $cleanedField := replace $field "is_" "" }}
+    <small class="badge bg-{{ $color }}">{{ $cleanedField }}</small>
+{{ end }}

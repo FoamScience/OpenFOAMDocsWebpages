@@ -1,0 +1,89 @@
+{{ $entry := . }}
+<div class="card" style="margin-bottom: 10px;">
+
+  <div class="card-header">
+  {{ .name }}
+  {{ with .overloads }} {{ if gt (len .) 1 }}
+      <small class="badge bg-primary">Overloaded</small>
+  {{ end }} {{ end }}
+  </div>
+
+  <!-- Trick the method template to work for ctors and dtors for now -->
+  {{ $overloads := slice . }}
+  {{ if index $entry "overloads" }}
+  {{ $overloads = $entry.overloads }}
+  {{ end }}
+
+  <div class="card-body">
+  {{ range $oidx,$overload := $overloads }}
+    {{ if not (eq $oidx 0) }} <hr/> {{ end }}
+    <div>
+    {{ with $overload.access_specifier }}
+      {{ $color := "primary" }}
+      {{ if eq . "protected" }} $color = "success" {{ end }}
+      {{ if eq . "private" }} $color = "secondary" {{ end }}
+      <small class="badge bg-{{$color}}">{{ . }}</small>
+    {{ end }}
+
+    {{ partial "foamcd/tags.html" $overload }}
+    </div>
+    <div>
+      {{ with $overload.documentation.description }} <span> {{.  | strings.TrimSpace | markdownify}} </span> {{ end }}
+      {{ with $overload.documentation.deprecated }}
+        {{ if not (strings.Contains $overload.documentation.description $overload.documentation.deprecated) }}
+        <span> <br/> Deprecated, {{. | markdownify}}</span>
+        {{ end }}
+      {{ end }}
+    </div>
+    {{ highlight $overload.signature "cpp" }}
+    {{ with $overload.implements_abstract_from }}
+    <div class="row align-items-start">
+      {{ $base_class_method := printf "%s::%s::%s" .namespace .class_name $overload.name }}
+      <p>Implements: <a href="{{ .definition_file }}">{{ highlight $base_class_method "cpp" "hl_inline=true" }}</a>
+      {{ with .access_level }}
+        {{ $color := "primary" }}
+        {{ if eq . "protected" }} $color = "success" {{ end }}
+        {{ if eq . "private" }} $color = "secondary" {{ end }}
+        <small class="badge bg-{{$color}}">{{ . }}</small>
+      {{ end }}
+      </p>
+    </div>
+    {{ end }}
+    <div class="row align-items-start">
+      {{ with $overload.declaration_file }}
+      <div class="col">
+      <p>Declaration:</p>
+      <ul>
+        <li>{{ . }}</li>
+      </ul>
+      </div>
+      {{ end }}
+      {{ with $overload.definition_file }}
+      <div class="col">
+      <p>Definition:</p>
+      <ul>
+          {{ $nm := split . "/" }}
+          <li><a href="{{ . }}"> {{ index $nm (sub (len $nm) 1) }} </a></li>
+      </ul>
+      </div>
+      {{ end }}
+    </div>
+    {{ with $overload.parameters }}
+    Parameters:
+    <div class="row align-items-start">
+      {{ range $cparam,$param := . }}
+        <div class="col">
+          {{ .name }}
+        </div>
+      {{ end }}
+    </div>
+    {{ end }}
+    {{ with $overload.return_type }}
+    {{ if not (eq . "void") }}
+    Returns a {{ highlight . "cpp" "hl_inline=true" }}
+    {{ end }}
+    {{ end }}
+
+  {{ end }}
+  </div>
+</div>

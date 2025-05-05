@@ -1,0 +1,24 @@
+{{ with .openfoam_dsl }}
+{{ with .reflection }}
+{{ if .is_reflectable }}
+<div>
+    <p>As default configuration, this class will set the following values for its members if created by standard
+        means:</p>
+    <div class="alert alert-warning"> Depending on the level of support for reflection, this class may only
+        reliably report its members types. If the values look like they are compiler-defaults, they
+        are probably not the effective standard values.
+    </div>
+
+    {{ highlight .standard_config "cpp" }}
+</div>
+<div>
+    <p>More details/metadata about the expected standard configuration for this class</p>
+    <div class="alert alert-info"> The RTS options listed here are the ones available
+        when loading this library. More options might be available by loading other libraries.
+    </div>
+
+    {{ highlight .standard_config_details "cpp" }}
+</div>
+{{ end }}
+{{ end }}
+{{ end }}

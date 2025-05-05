@@ -1,0 +1,6 @@
+{{ $title := .title }}
+{{ $id := .title | urlize }}
+{{ $level := .level }}
+{{ $scratch := .scratch }}
+<h{{ $level }} id="{{ $id }}"> {{ $title }}</h{{ $level }}>
+{{ $scratch.Add "APITOC" (dict "title" $title "id" $id "level" $level ) }}

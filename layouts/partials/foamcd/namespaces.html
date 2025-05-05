@@ -1,0 +1,23 @@
+{{ if .Page.Params.foamCD.namespaces }}
+  <h2>Namespaces</h2>
+  <div class="foamcd-namespace-list">
+    {{ range $index, $namespace := .Page.Params.foamCD.namespaces }}
+      {{ if eq $namespace.name "<<separator>>" }}
+        <hr class="foamcd-separator" />
+      {{ else }}
+        <div class="foamcd-namespace-item">
+          <a href="{{ $namespace.uri }}" class="foamcd-namespace-link">
+            <span class="foamcd-namespace-name">{{ $namespace.name }}</span>
+          </a>
+          <div class="foamcd-namespace-meta">
+            {{ with $namespace.description }}
+              <span class="foamcd-namespace-description">
+                <small>{{ . }}</small>
+              </span>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

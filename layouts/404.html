@@ -1,8 +1,14 @@
 {{ define "main" -}}
-<div class="td-content">
-  <h1> <div class="fa fa-triangle-exclamation ms-2 fa-2x -text-warning"></div> Not found</h1>
-    <span class="fa-layers fa-fw" style="vertical-align: middle;">
-    <p>Oops! This page doesn't exist. Try going back to the <a href="{{ "" | relURL }}">home page</a>.</p>
-    </span>
-</div>
+<section id="404" class="row td-cover-block td-cover-block--height-100
+  {{ if not .Site.Params.ui.navbar_translucent_over_cover_disable }} js-td-cover
+  {{- end }} td-overlay {{ if .Site.Params.ui.darkMode }} td-overlay--dark -bg-dark{{ end }}">
+  <div class="col-12">
+    <div class="container td-overlay__inner">
+      <div class="text-center">
+        <h1 class="display-1 mt-0 mt-md-5 pb-4"> <div class="fa fa-triangle-exclamation ms-2 fa-2x -text-danger"></div> Not found </h1>
+        <p class="display-6 mb-0">Oops! This page doesn't exist. Try going back to the <a href="{{ "" | relURL }}">home page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
 {{- end }}
